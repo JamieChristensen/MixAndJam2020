@@ -82,6 +82,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: Enemies
+      Entry: 6
+      Data: 
   Path:
   - x: 0
     y: 0

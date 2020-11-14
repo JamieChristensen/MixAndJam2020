@@ -9,5 +9,10 @@ public class Level : SerializedScriptableObject
 {
     [TableMatrix(HorizontalTitle="Grid Layout", SquareCells=true)]
     public Cell[,] Grid;
+    
     public int2[] Path;
+
+    public Dictionary<StepUnit, int2> Enemies;
+
+
 }
