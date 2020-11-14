@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using GameJam.Events;
+using Sirenix.OdinInspector;
 
-public abstract class StepUnit : MonoBehaviour
+public abstract class StepUnit : SerializedMonoBehaviour
 {
 
     public bool shouldStep = true;
