@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7682974718991879049}
   - component: {fileID: 7682974718991879048}
   - component: {fileID: 7682974718991879055}
+  - component: {fileID: 5099779488705565595}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7682974718991879054}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.547, y: -0.07, z: 7.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,3 +97,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5099779488705565595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682974718991879054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd44f081ce91e447901d6efde115642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldStep: 1
+  gridPosition:
+    x: 0
+    y: 0
+  OnKillEvent: {fileID: 11400000, guid: 617019f2e16ac8543afe1a72dddfe8ca, type: 2}
+  ShootStep: 3
+  IndicatorSteps: 1
+  StartPrepareEvent: {fileID: 11400000, guid: cc8d0cf922729764a9f15aee16eb1e25, type: 2}
+  ShootEvent: {fileID: 11400000, guid: afb5ebc06f7f6f14dbe8249a237149fc, type: 2}
+  ShootHitEvent: {fileID: 11400000, guid: 29d2b67868fd6334aa7f3b29a242c215, type: 2}
+  ShootDeflectEvent: {fileID: 11400000, guid: 85ac2e9c49d8f6d4a81b8fc5e1ffc399, type: 2}
+  CounterAction: {fileID: 11400000, guid: 536b48fbc37e55b43a36dddfa524b835, type: 2}
+  Bullet: {fileID: 3716516044040575774, guid: 797407b31b4978744b4098e8374abbcf, type: 3}

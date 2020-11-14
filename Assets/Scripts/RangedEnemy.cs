@@ -33,6 +33,7 @@ public class RangedEnemy : StepUnit
                 // DIE BOY 
             } else
             {
+                Debug.Log("SHOOT BOOM");
                 StartCoroutine(DeflectRayAnimation());
             }
         }
