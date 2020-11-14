@@ -12,6 +12,7 @@ public class RangedEnemy : StepUnit
     public VoidEvent StartPrepareEvent;
     public VoidEvent ShootEvent;
     public VoidEvent ShootHitEvent;
+    public VoidEvent ShootDeflectEvent;
 
     public PlayerAction CounterAction;
 
@@ -56,7 +57,7 @@ public class RangedEnemy : StepUnit
         }
 
         BulletObject.transform.position = GameManager.instance.playerGO.transform.position;
-
+        ShootDeflectEvent?.Raise();
 
         var NewDirection = transform.position - GameManager.instance.playerGO.transform.position;
         var bulletRB = Bullet.GetComponent<Rigidbody>();
