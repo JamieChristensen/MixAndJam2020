@@ -19,22 +19,16 @@ public class GridManager : SerializedMonoBehaviour
 
 
 
-    // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
         SceneManager.sceneLoaded += Init;
-        Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     [Button(ButtonSizes.Large)]
     private void Init(Scene scene, LoadSceneMode loadSceneMode)
     {
         // In case we created the grid in editor
-        var Cells = FindObjectsOfType<Cell>();
-        foreach (var cell in Cells)
-        {
-            Destroy(cell);
-        }
+        NukeGrid();
 
         Level CurrentLevel = LevelManager.GetCurrentLevel();
         Cell Cell = CurrentLevel.Grid[0, 0];
@@ -86,19 +80,25 @@ public class GridManager : SerializedMonoBehaviour
 
     private void SpawnEnemies(Level Level)
     {
-        foreach (var EnemyEntry in Level.MeleeEnemies)
+        if (Level.MeleeEnemies != null)
         {
-            Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
-            Cell.SpawnStepUnit(EnemyEntry.Value);
+            foreach (var EnemyEntry in Level.MeleeEnemies)
+            {
+                Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
+                Cell.SpawnStepUnit(EnemyEntry.Value);
+            }
         }
 
-        foreach (var EnemyEntry in Level.RangedEnemies)
+        if (Level.RangedEnemies != null)
         {
-            Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
-            var RangedEnemyEntry = EnemyEntry.Value.Enemy;
-            RangedEnemyEntry.ShootStep = EnemyEntry.Value.StepArgument;
+            foreach (var EnemyEntry in Level.RangedEnemies)
+            {
+                Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
+                var RangedEnemyEntry = EnemyEntry.Value.Enemy;
+                RangedEnemyEntry.ShootStep = EnemyEntry.Value.StepArgument;
 
-            Cell.SpawnStepUnit(RangedEnemyEntry);
+                Cell.SpawnStepUnit(RangedEnemyEntry);
+            }
         }
     }
 
