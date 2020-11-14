@@ -137,8 +137,9 @@ public class GameManager : SerializedMonoBehaviour
     public void MovePlayerToNextPointOnPath()
     {   
         Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
+        newPos.y = 0;
 
-        playerGO.transform.Translate(newPos.x, 0, newPos.z);
+        playerGO.transform.position = newPos; 
 
         currentPathPosIndex++;
     }
