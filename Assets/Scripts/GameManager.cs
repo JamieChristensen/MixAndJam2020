@@ -73,8 +73,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void Start()
     {
-        Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-        SceneManager.sceneLoaded += Init;
+        Init();
     }
 
     private void Init(Scene scene, LoadSceneMode mode)
@@ -159,7 +158,7 @@ public class GameManager : SerializedMonoBehaviour
 
         t = Mathf.Clamp(t, 0.001f, 0.999f);
 
-        float tWidth = Mathf.Clamp01(1.2f - t);
+        float tWidth = Mathf.Clamp01(0.8f - t);
         playerCellVisualizer.startWidth = tWidth;
         playerCellVisualizer.endWidth = tWidth;
 
