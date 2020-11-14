@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour
 
     private bool hasRaisedStepEventThisStep;
 
-    private int currentPathPosIndex;
+    public int currentPathPosIndex;
 
 
     [Header("Inputs")]
     public KeyCode attackKey;
     public KeyCode moveKey, deflectKey;
 
-    public Action defaultAction;
+    public PlayerAction defaultAction;
 
     [Header("Player and Units")]
     [SerializeField]
@@ -47,18 +47,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Events")]
     public VoidEvent managerStepEvent;
-
-
-    public enum Action
-    {
-        Stand, Attack, Move, Deflect
-    }
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
-
-    }
 
     private void Start()
     {
@@ -73,7 +61,6 @@ public class GameManager : MonoBehaviour
 
 
         stepTimer += Time.deltaTime;
-
 
 
         if (stepTimer > stepDuration && !hasRaisedStepEventThisStep)
@@ -111,44 +98,24 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-
-
-
-    public void PlayerStep(Action action)
+    public void PlayerStep(PlayerAction action)
     {
-
-        switch (action)
+        if (!hasRaisedStepEventThisStep && IsInRange(stepTimer))
         {
-            case Action.Attack:
+            hasRaisedStepEventThisStep = true;
 
-                break;
+            action.ResolvePlayerAction(this);
 
-            case Action.Stand:
+            foreach (StepUnit stepUnit in stepUnits)
+            {
+                stepUnit.OnStep();
+            }
 
-                break;
-
-            case Action.Move:
-                MovePlayerToNextPointOnPath(currentPathPosIndex);
-                break;
-
-            case Action.Deflect:
-
-                break;
-
-            default:
-
-                break;
+            hasRaisedStepEventThisStep = false;
         }
-
-
-        foreach (StepUnit stepUnit in stepUnits)
-        {
-            stepUnit.OnStep();
-        }
-        hasRaisedStepEventThisStep = false;
     }
 
-    void MovePlayerToNextPointOnPath(int pathIndex)
+    public void MovePlayerToNextPointOnPath(int pathIndex)
     {   
         Vector3 newPos = gridManager.Path[pathIndex].transform.position;
 
@@ -156,26 +123,6 @@ public class GameManager : MonoBehaviour
 
         currentPathPosIndex++;
     
-    }
-
-    private Action ActionFromInput()
-    {
-        if (Input.GetKeyDown(attackKey))
-        {
-            return Action.Attack;
-        }
-
-        if (Input.GetKeyDown(moveKey))
-        {
-            return Action.Move;
-        }
-
-        if (Input.GetKeyDown(deflectKey))
-        {
-            return Action.Deflect;
-        }
-
-        return defaultAction;
     }
 
 }
