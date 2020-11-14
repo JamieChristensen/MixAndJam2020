@@ -19,7 +19,8 @@ public class GridManager : SerializedMonoBehaviour
     }
 
     [Button(ButtonSizes.Large)]
-    private void Init() {
+    private void Init()
+    {
         Level CurrentLevel = LevelManager.GetCurrentLevel();
         Cell Cell = CurrentLevel.Grid[0, 0];
 
@@ -35,7 +36,8 @@ public class GridManager : SerializedMonoBehaviour
         SpawnEnemies(CurrentLevel);
     }
 
-    private void GenerateGrid(Level Level) {
+    private void GenerateGrid(Level Level)
+    {
         int LevelSizeX = Level.Grid.GetLength(0);
         int LevelSizeY = Level.Grid.GetLength(1);
 
@@ -50,7 +52,7 @@ public class GridManager : SerializedMonoBehaviour
         }
     }
 
-    
+
 
     private void SpawnEnemies(Level Level)
     {
@@ -59,5 +61,10 @@ public class GridManager : SerializedMonoBehaviour
             Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
             Cell.SpawnStepUnit(EnemyEntry.Value);
         }
+    }
+
+    public Cell GetCellByPoint(int2 point)
+    {
+        return Cells[point.x, point.y];
     }
 }

@@ -13,10 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GridManager gridManager;
 
-    [SerializeField]
-    private LevelManager levelManager;
-    [SerializeField]
-    private Level currentLevel;
     private int2 currentPlayerPosition;
 
 
@@ -32,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float stepDuration;
     private float stepTimer;
+
+    private bool hasRaisedStepEventThisStep;
 
 
     [Header("Inputs")]
@@ -63,53 +61,59 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Get level-data and units.
+        hasRaisedStepEventThisStep = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //GetPlayerInput and assign to recentInput:
+
+
         stepTimer += Time.deltaTime;
 
-        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval.x;
-        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval.y;
 
-        if (!isTimerOverLowerBound)
+
+        if (stepTimer > stepDuration && !hasRaisedStepEventThisStep)
         {
-            //Early quit, since timing is outside interval.
+            managerStepEvent?.Raise();
+            hasRaisedStepEventThisStep = true;
+        }
+
+        //Grace period for Input to player:
+        if (stepTimer > stepDuration && stepTimer < stepDuration + stepInputInterval.y)
+        {
             return;
         }
 
-        if (ActionFromInput() == defaultAction && isTimerBelowUpperBound)
-        {
-            return;
-        }
-        //Upper bound is now either exceeded or input within interval has been received:
-
-
-        PlayerStep();
-
-
-        foreach (StepUnit stepUnit in stepUnits)
-        {
-            stepUnit.OnStep();
-        }
-
-        managerStepEvent?.Raise();
-
-
-
+        //Grace period over
+        PlayerStep(defaultAction);
         //Prepare next step-waiting:
         stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
         stepCount++;
+        hasRaisedStepEventThisStep = false;
+    }
+
+    public bool IsInRange(float time)
+    {
+        if (time < stepDuration - stepInputInterval.x)
+        {
+            return false;
+        }
+
+        if (time > stepDuration + stepInputInterval.y)
+        {
+            return false;
+        }
+
+        return true;
     }
 
 
-    private void PlayerStep()
-    {
-        Action action = ActionFromInput();
 
-        int xMove = stepCount % 2 == 1 ? -1 : 1;
-        playerGO.transform.Translate(xMove, 0, 0);
+
+    private void PlayerStep(Action action)
+    {
 
         switch (action)
         {
@@ -122,8 +126,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case Action.Move:
-                int yMove = stepCount % 2 == 1 ? -1 : 1;
-                playerGO.transform.Translate(0, yMove, 0);
+                MovePlayerToPointOnGrid();
                 break;
 
             case Action.Deflect:
@@ -136,8 +139,17 @@ public class GameManager : MonoBehaviour
         }
 
 
+        foreach (StepUnit stepUnit in stepUnits)
+        {
+            stepUnit.OnStep();
+        }
+        hasRaisedStepEventThisStep = false;
+    }
 
-        //TODO: Do something to playerPosition based on input and action. 
+    void MovePlayerToPointOnGrid(int2 point)
+    {
+        Vector3 newPos = gridManager.GetCellByPoint(point).transform.position;
+        playerGO.transform.Translate(newPos.x, 0, newPos.z);
     }
 
     private Action ActionFromInput()
