@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using Sirenix.OdinInspector;
+using System.Linq;
 
 public class GridManager : SerializedMonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GridManager : SerializedMonoBehaviour
     private Cell[,] Cells;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Init();
     }
@@ -40,6 +41,19 @@ public class GridManager : SerializedMonoBehaviour
         SpawnEnemies(CurrentLevel);
     }
 
+    [Button(ButtonSizes.Large)]
+    private void NukeGrid()
+    {
+        List<Transform> transforms = transform.GetComponentsInChildren<Transform>().ToList<Transform>();
+        foreach (Transform trans in transforms)
+        {
+            if (trans != null && trans.gameObject != this.gameObject)
+            {
+                DestroyImmediate(trans.gameObject);
+            }
+        }
+    }
+
     private void GenerateGrid(Level Level)
     {
         int LevelSizeX = Level.Grid.GetLength(0);
@@ -58,6 +72,8 @@ public class GridManager : SerializedMonoBehaviour
 
 
 
+
+
     private void SpawnEnemies(Level Level)
     {
         foreach (var EnemyEntry in Level.Enemies)
@@ -71,7 +87,7 @@ public class GridManager : SerializedMonoBehaviour
     {
         return Cells[point.x, point.y];
     }
-    
+
     private void GeneratePath(Level Level)
     {
         Path = new Cell[Level.Path.Length];

@@ -13,7 +13,7 @@ public class GameManager : SerializedMonoBehaviour
     [BoxGroup("Dependencies")]
     [SerializeField]
     private GridManager gridManager;
-    
+
     [BoxGroup("Player stuff")]
     private int2 currentPlayerPosition;
 
@@ -27,7 +27,7 @@ public class GameManager : SerializedMonoBehaviour
     [BoxGroup("Step Timer")]
     [SerializeField]
     private float2 stepInputInterval;
-    
+
     [BoxGroup("Step Timer")]
     [SerializeField]
     private float stepDuration;
@@ -53,7 +53,7 @@ public class GameManager : SerializedMonoBehaviour
     [BoxGroup("Player stuff")]
     [SerializeField]
     private GameObject playerGO;
-    
+
     [HideInInspector]
     public List<StepUnit> stepUnits;
 
@@ -77,20 +77,29 @@ public class GameManager : SerializedMonoBehaviour
     private void Update()
     {
         //GetPlayerInput and assign to recentInput:
-
-
         stepTimer += Time.deltaTime;
 
-
-        if (stepTimer > stepDuration && !hasRaisedStepEventThisStep)
+        if (stepTimer < stepDuration - stepInputInterval.x)
         {
-            managerStepEvent?.Raise();
+            return;
+        }
+
+
+        if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
+        {
+            Debug.Log("In here");
+            managerStepEvent.Raise();
             hasRaisedStepEventThisStep = true;
+            if (managerStepEvent != null)
+            {
+                Debug.Log("Raised step-event ");
+            }
         }
 
         //Grace period for Input to player:
-        if (stepTimer > stepDuration && stepTimer < stepDuration + stepInputInterval.y)
+        if (stepTimer > stepDuration && stepTimer < stepDuration + (float)stepInputInterval.y)
         {
+            Debug.Log("SUP");
             return;
         }
 
@@ -135,10 +144,10 @@ public class GameManager : SerializedMonoBehaviour
     }
 
     public void MovePlayerToNextPointOnPath()
-    {   
+    {
         Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
 
-        playerGO.transform.Translate(newPos.x, 0, newPos.z);
+        playerGO.transform.position = new Vector3(newPos.x, 0, newPos.z);
 
         currentPathPosIndex++;
     }

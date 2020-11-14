@@ -26,6 +26,7 @@ public class ChangeMaterialColor : MonoBehaviour
 
     public void ChangeColor()
     {
+        Debug.Log("ChangeColor");
         if (!changeBetweenTwoColors)
         {
             meshRenderer.material.SetColor("_BaseColor", colorToChangeTo);
