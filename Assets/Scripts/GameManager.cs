@@ -171,14 +171,10 @@ public class GameManager : SerializedMonoBehaviour
     {
         int2 playerPos = PlayerPositionOnGrid();
 
-        if (gridManager.GetCurrentLevel().Enemies[playerPos] == null)
-        {
-            Debug.Log("Enemy dictionary access didn't work");
-        }
-
-        StepUnit unitOnPlayerPos = gridManager.GetCurrentLevel().Enemies[playerPos];
+        StepUnit disguydead;
+        disguydead = gridManager.GetCellByPoint(playerPos).GetComponentInChildren<StepUnit>();
         
-        unitOnPlayerPos.IsKill();
+        disguydead?.IsKill();
 
     }
 
