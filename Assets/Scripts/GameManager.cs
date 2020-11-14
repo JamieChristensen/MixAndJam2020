@@ -68,18 +68,13 @@ public class GameManager : SerializedMonoBehaviour
 
     bool HasDonePlayerAction = false;
 
-    [SerializeField] //Assigning in inspector
-    private LineRenderer playerCellVisualizer;
-
-
     private void Start()
     {
         Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         SceneManager.sceneLoaded += Init;
     }
 
-    private void Init(Scene scene, LoadSceneMode mode)
-    {
+    private void Init(Scene scene, LoadSceneMode mode) {
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
 
@@ -87,9 +82,9 @@ public class GameManager : SerializedMonoBehaviour
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
 
         playerGO = Instantiate(playerGO);
-        MovePlayerToNextPointOnPath();
+        //MovePlayerToNextPointOnPath();
 
-
+        
     }
 
 
@@ -108,15 +103,14 @@ public class GameManager : SerializedMonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //GetPlayerInput and assign to recentInput:
         stepTimer += Time.deltaTime;
-        UpdateCellVisualizer();
-
 
         if (stepTimer > stepDuration - stepInputInterval.x)
         {
             if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
             {
-                Debug.Log("In here");
+                //Debug.Log("In here");
                 managerStepEvent.Raise();
                 hasRaisedStepEventThisStep = true;
                 if (managerStepEvent != null)
@@ -140,22 +134,6 @@ public class GameManager : SerializedMonoBehaviour
                 HasDonePlayerAction = false;
             }
         }
-    }
-
-    private void UpdateCellVisualizer()
-    {
-        Cell activeCell = CellPlayerIsOn();
-
-        Vector3[] points = new Vector3[5];
-        Bounds bounds = activeCell.GetComponent<MeshRenderer>().bounds;
-
-        points[0] = new Vector3(bounds.max.x, 0.2f, bounds.max.z);
-        points[1] = new Vector3(bounds.max.x, 0.2f, bounds.min.z);
-        points[2] = new Vector3(bounds.min.x, 0.2f, bounds.min.z);
-        points[3] = new Vector3(bounds.min.x, 0.2f, bounds.max.z);
-        points[4] = new Vector3(bounds.max.x, 0.2f, bounds.max.z);
-
-        playerCellVisualizer?.SetPositions(points);
     }
 
     public bool IsInRange(float time)
@@ -202,16 +180,16 @@ public class GameManager : SerializedMonoBehaviour
             Debug.Log("End of path");
             return;
         }
-        Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
+        Vector3 newPos = gridManager.Path[currentPathPosIndex+1].transform.position;
         newPos.y = 0;
 
         currentPathPosIndex++;
-
+        
         //Visual movement
         playerGO.transform.LookAt(newPos);
         StartCoroutine(LerpToPositon(newPos));
         playerGO.GetComponent<Animator>().Play("Sprint");
-
+        
     }
 
     IEnumerator LerpToPositon(Vector3 pos)
@@ -221,7 +199,7 @@ public class GameManager : SerializedMonoBehaviour
         float lerpDuration = 0.5f;
         while (timeElapsed < lerpDuration)
         {
-            playerGO.transform.position = Vector3.Lerp(fromPos, pos, timeElapsed / lerpDuration);
+            playerGO.transform.position = Vector3.Lerp(fromPos, pos , timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;
 
             yield return null;
@@ -229,10 +207,6 @@ public class GameManager : SerializedMonoBehaviour
 
     }
 
-    private Cell CellPlayerIsOn()
-    {
-        return gridManager.Path[currentPathPosIndex];
-    }
     private int2 PlayerPositionOnGrid()
     {
         return gridManager.Path[currentPathPosIndex].point;
@@ -242,9 +216,15 @@ public class GameManager : SerializedMonoBehaviour
     {
         int2 playerPos = PlayerPositionOnGrid();
 
+        Debug.Log(playerPos);
+        Debug.Log(gridManager.GetCellByPoint(playerPos).point);
+        
         StepUnit disguydead;
-        disguydead = gridManager.GetCellByPoint(playerPos).GetComponentInChildren<StepUnit>();
-
+        disguydead = gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>();
+        //Destroy(gridManager.GetCellByPoint(playerPos));
+        
+        Debug.Log(gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>());
+        
         disguydead?.IsKill();
 
     }

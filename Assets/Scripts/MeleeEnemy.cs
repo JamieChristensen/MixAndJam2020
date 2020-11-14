@@ -17,7 +17,7 @@ public class MeleeEnemy : StepUnit
     {
         base.OnStep();
 
-        Debug.Log("step");
+        //Debug.Log("step");
 
         //Do step-stuff.
         //if(grid.isPlayerOnPos) 

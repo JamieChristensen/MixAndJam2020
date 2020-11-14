@@ -252,6 +252,7 @@ MonoBehaviour:
   gridPosition:
     x: 0
     y: 0
+  OnKillEvent: {fileID: 0}
   deathParticles: {fileID: 1190694210937056776, guid: c5f68920d3c79b0419c7dc421d90f579,
     type: 3}
 --- !u!65 &66981626
@@ -1745,6 +1746,7 @@ MonoBehaviour:
   gridPosition:
     x: 0
     y: 0
+  OnKillEvent: {fileID: 0}
   deathParticles: {fileID: 1190694210937056776, guid: c5f68920d3c79b0419c7dc421d90f579,
     type: 3}
 --- !u!65 &1136080516
@@ -3002,7 +3004,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pathMarker
       value: 
-      objectReference: {fileID: 4876267949813427912, guid: 61ad59048b92fd64aac5783f9b26dbb5,
+      objectReference: {fileID: 4797436711327953610, guid: b8ff54690bbe6fd4697051aaf3622c42,
         type: 3}
     - target: {fileID: 8550410474388275619, guid: aead7203aba168442a1652c1c0906f76,
         type: 3}

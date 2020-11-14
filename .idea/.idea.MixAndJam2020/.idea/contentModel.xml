@@ -119,6 +119,7 @@
             <e p="PlayerAction.cs" t="Include" />
           </e>
           <e p="AudioManager.cs" t="Include" />
+          <e p="CameraSystem.cs" t="Include" />
           <e p="Cell.cs" t="Include" />
           <e p="FeedbackTest.cs" t="Include" />
           <e p="GameEvents" t="Include">
@@ -143,7 +144,10 @@
           <e p="GridManager.cs" t="Include" />
           <e p="Level.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
+          <e p="LoopingRangedEnemy.cs" t="Include" />
           <e p="MeleeEnemy.cs" t="Include" />
+          <e p="RangedEnemy.cs" t="Include" />
+          <e p="RoateScript.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="Small event-reaction scripts" t="Include">
             <e p="ChangeMaterialColor.cs" t="Include" />
