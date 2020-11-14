@@ -8,7 +8,31 @@ using GameJam.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+
+    [Header("Level related")]
+    [SerializeField]
+    private GridManager gridManager;
+
+    [SerializeField]
+    private LevelManager levelManager;
+    [SerializeField]
+    private Level currentLevel;
+    private int2 currentPlayerPosition;
+
+
+
+    [Header("Step related stuff")]
+    [Tooltip("The current step in this round. For score, eventually.")]
+    [SerializeField]
+    private int stepCount;
+
+    [SerializeField]
+    private float2 stepInputInterval;
+
+    [SerializeField]
+    private float stepDuration;
+    private float stepTimer;
+
 
     [Header("Inputs")]
     public KeyCode attackKey;
@@ -16,26 +40,10 @@ public class GameManager : MonoBehaviour
 
     public Action defaultAction;
 
-    [Header("Step-related stuff")]
-    public List<StepUnit> stepUnits;
-
-    [SerializeField]
-    private float stepInputInterval;
-
-    [SerializeField]
-    private float stepDuration;
-    private float stepTimer;
-
-    [Tooltip("The current step in this round. For score, eventually.")]
-    [SerializeField]
-    private int stepCount;
-
-
-
-    [Header("Player object related stuff")]
+    [Header("Player and Units")]
     [SerializeField]
     private GameObject playerGO;
-    private int2 playerPosition;
+    public List<StepUnit> stepUnits;
 
     [Header("Events")]
     public VoidEvent managerStepEvent;
@@ -49,7 +57,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        instance = this;
+
     }
 
     private void Start()
@@ -62,8 +70,8 @@ public class GameManager : MonoBehaviour
     {
         stepTimer += Time.deltaTime;
 
-        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval;
-        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval;
+        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval.x;
+        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval.y;
 
         if (!isTimerOverLowerBound)
         {
