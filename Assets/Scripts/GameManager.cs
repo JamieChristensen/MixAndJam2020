@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     private bool hasRaisedStepEventThisStep;
 
+    private int currentPathPosIndex;
+
 
     [Header("Inputs")]
     public KeyCode attackKey;
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    private void PlayerStep(Action action)
+    public void PlayerStep(Action action)
     {
 
         switch (action)
@@ -126,7 +128,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case Action.Move:
-                MovePlayerToPointOnGrid();
+                MovePlayerToNextPointOnPath(currentPathPosIndex);
                 break;
 
             case Action.Deflect:
@@ -146,10 +148,14 @@ public class GameManager : MonoBehaviour
         hasRaisedStepEventThisStep = false;
     }
 
-    void MovePlayerToPointOnGrid(int2 point)
-    {
-        Vector3 newPos = gridManager.GetCellByPoint(point).transform.position;
+    void MovePlayerToNextPointOnPath(int pathIndex)
+    {   
+        Vector3 newPos = gridManager.Path[pathIndex].transform.position;
+
         playerGO.transform.Translate(newPos.x, 0, newPos.z);
+
+        currentPathPosIndex++;
+    
     }
 
     private Action ActionFromInput()
