@@ -55,11 +55,14 @@ public class GameManager : SerializedMonoBehaviour
     private GameObject playerGO;
 
     [ReadOnly]
+    [HideInEditorMode]
     public List<StepUnit> stepUnits;
 
     [Header("Events")]
     [BoxGroup("Step Timer")]
     public VoidEvent managerStepEvent;
+
+    bool HasDonePlayerAction = false;
 
     private void Start()
     {
@@ -79,36 +82,34 @@ public class GameManager : SerializedMonoBehaviour
         //GetPlayerInput and assign to recentInput:
         stepTimer += Time.deltaTime;
 
-        if (stepTimer < stepDuration - stepInputInterval.x)
+        if (stepTimer > stepDuration - stepInputInterval.x)
         {
-            return;
-        }
-
-
-        if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
-        {
-            Debug.Log("In here");
-            managerStepEvent.Raise();
-            hasRaisedStepEventThisStep = true;
-            if (managerStepEvent != null)
+            if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
             {
-                Debug.Log("Raised step-event ");
+                Debug.Log("In here");
+                managerStepEvent.Raise();
+                hasRaisedStepEventThisStep = true;
+                if (managerStepEvent != null)
+                {
+                    Debug.Log("Raised step-event ");
+                }
+            }
+
+            //Grace period for Input to player:
+            if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
+            {
+                PlayerStep(defaultAction);
+                return;
+            }
+
+            if (stepTimer > stepDuration && HasDonePlayerAction)
+            {
+                stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+                stepCount++;
+                hasRaisedStepEventThisStep = false;
+                HasDonePlayerAction = false;
             }
         }
-
-        //Grace period for Input to player:
-        if (stepTimer >= stepDuration && stepTimer <= stepDuration + stepInputInterval.y)
-        {
-            Debug.Log("SUP");
-            return;
-        }
-
-        //Grace period over
-        PlayerStep(defaultAction);
-        //Prepare next step-waiting:
-        stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
-        stepCount++;
-        hasRaisedStepEventThisStep = false;
     }
 
     public bool IsInRange(float time)
@@ -126,21 +127,24 @@ public class GameManager : SerializedMonoBehaviour
         return true;
     }
 
+    public void InRangePlayerStep(PlayerAction action)
+    {
+        if (IsInRange(stepTimer))
+        {
+            PlayerStep(action);
+        }
+    }
+
     public void PlayerStep(PlayerAction action)
     {
-        if (!hasRaisedStepEventThisStep && IsInRange(stepTimer))
+        action.ResolvePlayerAction(this);
+
+        foreach (StepUnit stepUnit in stepUnits)
         {
-            hasRaisedStepEventThisStep = true;
-
-            action.ResolvePlayerAction(this);
-
-            foreach (StepUnit stepUnit in stepUnits)
-            {
-                stepUnit.OnStep();
-            }
-
-            hasRaisedStepEventThisStep = false;
+            stepUnit.OnStep();
         }
+
+        HasDonePlayerAction = true;
     }
 
     public void MovePlayerToNextPointOnPath()
@@ -176,4 +180,25 @@ public class GameManager : SerializedMonoBehaviour
         }
 
     }
+
+    private int2 PlayerPositionOnGrid()
+    {
+        return gridManager.Path[currentPathPosIndex].point;
+    }
+
+    public void PlayerAttackAction()
+    {
+        int2 playerPos = PlayerPositionOnGrid();
+
+        if (gridManager.GetCurrentLevel().Enemies[playerPos] == null)
+        {
+            Debug.Log("Enemy dictionary access didn't work");
+        }
+
+        StepUnit unitOnPlayerPos = gridManager.GetCurrentLevel().Enemies[playerPos];
+        
+        unitOnPlayerPos.IsKill();
+
+    }
+
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class MeleeEnemy : StepUnit
 {
+    [SerializeField]
+    private GameObject deathParticles;
+    
     private void Start()
     {
         shouldStep = true;
@@ -19,5 +22,14 @@ public class MeleeEnemy : StepUnit
         //Do step-stuff.
         //if(grid.isPlayerOnPos) 
         //Needs grid-reference to kill player.
+    }
+
+    public override void IsKill()
+    {
+        base.IsKill();
+        
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        Destroy(this.gameObject, 0.1f);
+
     }
 }

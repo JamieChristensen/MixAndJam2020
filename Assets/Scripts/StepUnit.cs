@@ -22,4 +22,9 @@ public abstract class StepUnit : MonoBehaviour
         //Do other things in classes.
     }
 
+    public virtual void IsKill()
+    {
+        Debug.Log("Unit is kill.");
+    }
+
 }
