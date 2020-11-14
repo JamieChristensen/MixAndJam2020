@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class FeedbackTest : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    AudioClip clip;
+
+
+    AudioSource audSource;
+
     void Start()
     {
-        
+        audSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void playClipOnBeat()
     {
-        
-        
-
+        audSource.PlayOneShot(clip);
     }
 }
