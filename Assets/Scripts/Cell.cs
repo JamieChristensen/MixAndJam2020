@@ -6,6 +6,6 @@ public class Cell : MonoBehaviour
 {
     public void SpawnStepUnit(StepUnit Unit)
     {
-        Instantiate(Unit, transform.position, Quaternion.identity, this.transform);
+        Instantiate(Unit, transform.position + new Vector3(0,1,0), Quaternion.identity, this.transform);
     }
 }
