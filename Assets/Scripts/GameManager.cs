@@ -10,6 +10,8 @@ using Sirenix.OdinInspector;
 public class GameManager : SerializedMonoBehaviour
 {
 
+    public static GameManager instance;
+
     [BoxGroup("Dependencies")]
     [SerializeField]
     private GridManager gridManager;
@@ -30,7 +32,7 @@ public class GameManager : SerializedMonoBehaviour
 
     [BoxGroup("Step Timer")]
     [SerializeField]
-    private float stepDuration;
+    public float stepDuration;
 
     [BoxGroup("Step Timer")]
     [ReadOnly]
@@ -74,6 +76,18 @@ public class GameManager : SerializedMonoBehaviour
 
         playerGO = Instantiate(playerGO);
         MovePlayerToNextPointOnPath();
+    }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
