@@ -18,6 +18,13 @@ public class GridManager : SerializedMonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // In case we created the grid in editor
+        var Cells = FindObjectsOfType<Cell>();
+        foreach (var cell in Cells)
+        {
+            Destroy(cell);
+        }
+
         Init();
     }
 
