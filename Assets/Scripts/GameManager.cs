@@ -153,9 +153,27 @@ public class GameManager : SerializedMonoBehaviour
         Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
         newPos.y = 0;
 
-        playerGO.transform.position = newPos;
-
         currentPathPosIndex++;
+        
+        //Visual movement
+        playerGO.transform.LookAt(newPos);
+        StartCoroutine(LerpToPositon(newPos));
+        playerGO.GetComponent<Animator>().Play("Sprint");
+        
     }
 
+    IEnumerator LerpToPositon(Vector3 pos)
+    {
+        Vector3 fromPos = playerGO.transform.position;
+        float timeElapsed = 0;
+        float lerpDuration = 0.5f;
+        while (timeElapsed < lerpDuration)
+        {
+            playerGO.transform.position = Vector3.Lerp(fromPos, pos , timeElapsed / lerpDuration);
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+    }
 }
