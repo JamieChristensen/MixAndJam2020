@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8217842846704580862}
   - component: {fileID: 8217842846704580861}
+  - component: {fileID: 8592758305157549638}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,17 +44,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22eb4b112fc07e145867636ef725f6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridManager: {fileID: 0}
   levelManager: {fileID: 0}
+  currentLevel: {fileID: 0}
+  stepCount: 0
+  stepInputInterval:
+    x: 0
+    y: 0
+  stepDuration: 0.5
   attackKey: 113
   moveKey: 119
   deflectKey: 101
   defaultAction: 0
+  playerGO: {fileID: 0}
   stepUnits:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  stepInputInterval: 0.1
-  stepDuration: 0.5
-  stepCount: 0
-  playerGO: {fileID: 0}
   managerStepEvent: {fileID: 11400000, guid: 46bf88a205cdafe469ec017c0bde8247, type: 2}
+--- !u!114 &8592758305157549638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217842846704580860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 216dbd2f73882f5499740b221a13f99b,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8217842846704580861}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a36eda0e-bdeb-4061-89dd-f2455200e1af
+    m_ActionName: Combat/Attack[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6fdf0e9f-3c2e-4193-be6f-084244363ef8
+    m_ActionName: Combat/Move[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7bdad55c-fff0-4872-94ed-e796411f94b5
+    m_ActionName: Combat/Deflect[/Keyboard/d]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Combat
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
