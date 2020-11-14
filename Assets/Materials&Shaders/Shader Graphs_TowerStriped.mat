@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_StripeShader
-  m_Shader: {fileID: -6465566751694194690, guid: fb275af665710364fa794b7430574c79,
+  m_Name: Shader Graphs_TowerStriped
+  m_Shader: {fileID: -6465566751694194690, guid: 89c810195962e054baf018d969cc1625,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -23,8 +23,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_47BA067D: 3.8
+    - Vector1_173D3950: 2.61
+    - Vector1_47BA067D: 2
     m_Colors:
-    - Color_8B439428: {r: 0, g: 28.64626, b: 31.626795, a: 1}
+    - Color_8B439428: {r: 0, g: 35.267677, b: 38.937145, a: 0}
     - Vector2_73380AA9: {r: 2, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
