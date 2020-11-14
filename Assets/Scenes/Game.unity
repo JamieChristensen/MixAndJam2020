@@ -1444,7 +1444,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 13
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 2022071088}
   m_Follow: {fileID: 2022071088}
@@ -1569,7 +1569,7 @@ PrefabInstance:
     - target: {fileID: 4714485175095705413, guid: 090106ed2bd4887438f839b5f2c84ccc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.05
+      value: 16.4
       objectReference: {fileID: 0}
     - target: {fileID: 4714485175095705413, guid: 090106ed2bd4887438f839b5f2c84ccc,
         type: 3}
@@ -2357,8 +2357,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312745117}
-  m_LocalRotation: {x: 0.46869376, y: 0.00028357655, z: -0.0001703524, w: 0.8833607}
-  m_LocalPosition: {x: 20.122097, y: 32.83513, z: -14.075348}
+  m_LocalRotation: {x: 0.2604315, y: 0.015608143, z: -0.004210725, w: 0.965357}
+  m_LocalPosition: {x: -0.11798512, y: 3.01, z: -3.66968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3282,6 +3282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: caf0b6d765fb8a54ebf76ebae4c63010, type: 3}
+  followCamera: {fileID: 1005592025}
+  cameraShakeAmount: 1
+  shakeDuration: 1
 --- !u!4 &2023764980
 Transform:
   m_ObjectHideFlags: 0
