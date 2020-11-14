@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class StepUnit : MonoBehaviour
 {
-    public bool shouldStep;
+    public bool shouldStep = true;
 
     public virtual void OnStep()
     {
@@ -15,6 +15,5 @@ public abstract class StepUnit : MonoBehaviour
 
         //Do other things in classes.
     }
-
 
 }
