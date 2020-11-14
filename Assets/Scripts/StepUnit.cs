@@ -10,6 +10,8 @@ public abstract class StepUnit : MonoBehaviour
     public bool shouldStep = true;
     public int2 gridPosition;
 
+    public VoidEvent OnKillEvent;
+
     public virtual void OnStep()
     {
         if (!shouldStep)
@@ -24,6 +26,7 @@ public abstract class StepUnit : MonoBehaviour
 
     public virtual void IsKill()
     {
+        OnKillEvent?.Raise();
         Debug.Log("Unit is kill.");
     }
 
