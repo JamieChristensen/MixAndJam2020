@@ -12,6 +12,7 @@ public class GridManager : SerializedMonoBehaviour
     private LevelManager LevelManager;
 
     public Cell[] Path;
+    public GameObject pathMarker;
 
     private float2 CellSize;
     private Cell[,] Cells;
@@ -83,9 +84,6 @@ public class GridManager : SerializedMonoBehaviour
     }
 
 
-
-
-
     private void SpawnEnemies(Level Level)
     {
         foreach (var EnemyEntry in Level.MeleeEnemies)
@@ -116,6 +114,12 @@ public class GridManager : SerializedMonoBehaviour
         {
             int2 Position = Level.Path[i];
             Path[i] = Cells[Position.x, Position.y];
+            
+            //add path markers
+            Vector3 pos = Cells[Position.x, Position.y].transform.position + new Vector3(0,0.1f,0);
+            GameObject inst = Instantiate(pathMarker, pos, quaternion.identity);
+            inst.transform.localScale = new Vector3(3, 3, 3);
+            inst.transform.Rotate(90,0,0);
         }
     }
 
