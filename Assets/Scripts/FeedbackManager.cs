@@ -5,7 +5,7 @@ using Cinemachine;
 using DG.Tweening;
 
 [RequireComponent(typeof(AudioSource))]
-public class FeedbackTest : MonoBehaviour
+public class FeedbackManager : MonoBehaviour
 {
     [SerializeField]
     AudioClip clip = default;

@@ -295,7 +295,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 133fd0d680cf7ba48bfc18f0f9912b80, type: 2}
+  - {fileID: 2100000, guid: 28f7bdb061e065d4bb92b4cba94f5ed8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -771,6 +771,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Post Process Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 429930515156311697, guid: d508aee22a64cd04d801f138eec09994,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 429930515156311699, guid: d508aee22a64cd04d801f138eec09994,
         type: 3}
       propertyPath: m_RootOrder
@@ -1139,6 +1144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sky and Fog Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761580504820266950, guid: ad1e5e973c5215347a31edf7e4b1f599,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1e5e973c5215347a31edf7e4b1f599, type: 3}
