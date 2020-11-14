@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3011670628439577999}
   - component: {fileID: 7334608604765923010}
   - component: {fileID: -3135690873893961809}
+  - component: {fileID: 7132394247167867052}
+  - component: {fileID: 7132394247167867051}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -57,10 +59,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: a270ac6c9cb658f43ae5583e398da44f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7334608604765923010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,3 +111,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldStep: 1
+  gridPosition:
+    x: 0
+    y: 0
+--- !u!114 &7132394247167867052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504565024844220437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b206943e4efab2d47ae0a404739449f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 3011670628439577999}
+  propertyName: _BaseColor
+  colorToChangeTo: {r: 1, g: 0, b: 0, a: 0}
+  secondColorToChangeTo: {r: 0.19215703, g: 1, b: 0, a: 0}
+  changeBetweenTwoColors: 1
+--- !u!114 &7132394247167867051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504565024844220437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 46bf88a205cdafe469ec017c0bde8247, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7132394247167867052}
+        m_TargetAssemblyTypeName: ChangeMaterialColor, Assembly-CSharp
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

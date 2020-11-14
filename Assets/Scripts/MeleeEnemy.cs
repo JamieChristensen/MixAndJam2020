@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class MeleeEnemy : StepUnit
 {
-
-
     private void Start()
     {
         shouldStep = true;

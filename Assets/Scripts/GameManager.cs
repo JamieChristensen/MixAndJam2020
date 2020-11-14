@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.Mathematics;
+using GameJam.Events;
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Inputs")]
+    public KeyCode attackKey;
+    public KeyCode moveKey, deflectKey;
+
+    public Action defaultAction;
 
     [Header("Step-related stuff")]
     public List<StepUnit> stepUnits;
@@ -26,14 +32,19 @@ public class GameManager : MonoBehaviour
 
 
 
-    [Header("Player related stuff")]
+    [Header("Player object related stuff")]
     [SerializeField]
     private GameObject playerGO;
     private int2 playerPosition;
 
+    [Header("Events")]
+    public VoidEvent managerStepEvent;
 
 
-
+    public enum Action
+    {
+        Stand, Attack, Move, Deflect
+    }
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,11 +61,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         stepTimer += Time.deltaTime;
-        if (stepTimer < stepDuration)
+
+        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval;
+        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval;
+
+        if (!isTimerOverLowerBound)
+        {
+            //Early quit, since timing is outside interval.
+            return;
+        }
+
+        if (ActionFromInput() == defaultAction && isTimerBelowUpperBound)
         {
             return;
         }
-        stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+        //Upper bound is now either exceeded or input within interval has been received:
 
 
         PlayerStep();
@@ -65,24 +86,70 @@ public class GameManager : MonoBehaviour
             stepUnit.OnStep();
         }
 
-        //Play beat-sounds
+        managerStepEvent?.Raise();
 
-        //P
 
+
+        //Prepare next step-waiting:
+        stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
         stepCount++;
     }
 
 
     private void PlayerStep()
     {
-        int yMove = stepCount % 2 == 1 ? -1 : 1;
-        playerGO.transform.Translate(0, yMove, 0);
+        Action action = ActionFromInput();
+
+        int xMove = stepCount % 2 == 1 ? -1 : 1;
+        playerGO.transform.Translate(xMove, 0, 0);
+
+        switch (action)
+        {
+            case Action.Attack:
+
+                break;
+
+            case Action.Stand:
+
+                break;
+
+            case Action.Move:
+                int yMove = stepCount % 2 == 1 ? -1 : 1;
+                playerGO.transform.Translate(0, yMove, 0);
+                break;
+
+            case Action.Deflect:
+
+                break;
+
+            default:
+
+                break;
+        }
+
+
 
         //TODO: Do something to playerPosition based on input and action. 
-        
-        
     }
 
+    private Action ActionFromInput()
+    {
+        if (Input.GetKeyDown(attackKey))
+        {
+            return Action.Attack;
+        }
 
-    
+        if (Input.GetKeyDown(moveKey))
+        {
+            return Action.Move;
+        }
+
+        if (Input.GetKeyDown(deflectKey))
+        {
+            return Action.Deflect;
+        }
+
+        return defaultAction;
+    }
+
 }
