@@ -19,17 +19,15 @@ public class GridManager : SerializedMonoBehaviour
 
 
 
-    void OnEnable()
+    void Awake()
     {
-        SceneManager.sceneLoaded += Init;
+        var Children = GetComponentInChildren<Transform>();
+        if (Children == null) Init();
     }
 
     [Button(ButtonSizes.Large)]
-    private void Init(Scene scene, LoadSceneMode loadSceneMode)
+    private void Init()
     {
-        // In case we created the grid in editor
-        NukeGrid();
-
         Level CurrentLevel = LevelManager.GetCurrentLevel();
         Cell Cell = CurrentLevel.Grid[0, 0];
 

@@ -24,6 +24,8 @@ public class RangedEnemy : StepUnit
     {
         base.OnStep();
 
+        Debug.Log("Ranged Enemey On Step");
+
         if (IsShootStep())
         {
             ShootEvent?.Raise();
