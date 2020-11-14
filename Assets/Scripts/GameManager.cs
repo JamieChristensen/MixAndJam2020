@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
     {
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
+
+        stepUnits.Clear();
+        stepUnits.AddRange(FindObjectsOfType<StepUnit>());
     }
 
     // Update is called once per frame
@@ -122,7 +125,6 @@ public class GameManager : MonoBehaviour
         playerGO.transform.Translate(newPos.x, 0, newPos.z);
 
         currentPathPosIndex++;
-    
     }
 
 }
