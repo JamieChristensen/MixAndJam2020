@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MeleeEnemy : StepUnit
 {
+
+
     private void Start()
     {
         shouldStep = true;
@@ -19,6 +21,5 @@ public class MeleeEnemy : StepUnit
         //Do step-stuff.
         //if(grid.isPlayerOnPos) 
         //Needs grid-reference to kill player.
-
     }
 }
