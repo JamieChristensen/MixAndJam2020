@@ -7,6 +7,6 @@ public class MoveAction : PlayerAction
 {
     public override void ResolvePlayerAction(GameManager gameManager)
     {
-        gameManager.MovePlayerToNextPointOnPath(gameManager.currentPathPosIndex);
+        gameManager.MovePlayerToNextPointOnPath();
     }
 }

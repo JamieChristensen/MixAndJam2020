@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
 
         stepUnits.Clear();
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
+
+        playerGO = Instantiate(playerGO);
+        MovePlayerToNextPointOnPath();
     }
 
     // Update is called once per frame
@@ -118,9 +121,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MovePlayerToNextPointOnPath(int pathIndex)
+    public void MovePlayerToNextPointOnPath()
     {   
-        Vector3 newPos = gridManager.Path[pathIndex].transform.position;
+        Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
 
         playerGO.transform.Translate(newPos.x, 0, newPos.z);
 
