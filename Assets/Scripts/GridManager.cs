@@ -9,6 +9,8 @@ public class GridManager : SerializedMonoBehaviour
     [SerializeField]
     private LevelManager LevelManager;
 
+    public Cell[] Path;
+
     private float2 CellSize;
     private Cell[,] Cells;
 
@@ -32,6 +34,8 @@ public class GridManager : SerializedMonoBehaviour
 
 
         GenerateGrid(CurrentLevel);
+
+        GeneratePath(CurrentLevel);
 
         SpawnEnemies(CurrentLevel);
     }
@@ -66,5 +70,15 @@ public class GridManager : SerializedMonoBehaviour
     public Cell GetCellByPoint(int2 point)
     {
         return Cells[point.x, point.y];
+    }
+    
+    private void GeneratePath(Level Level)
+    {
+        Path = new Cell[Level.Path.Length];
+        for (int i = 0; i < Level.Path.Length; i++)
+        {
+            int2 Position = Level.Path[i];
+            Path[i] = Cells[Position.x, Position.y];
+        }
     }
 }
