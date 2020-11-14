@@ -145,9 +145,15 @@ public class GameManager : SerializedMonoBehaviour
 
     public void MovePlayerToNextPointOnPath()
     {
+        if (currentPathPosIndex >= gridManager.Path.Length)
+        {
+            Debug.Log("End of path");
+            return;
+        }
         Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
+        newPos.y = 0;
 
-        playerGO.transform.position = new Vector3(newPos.x, 0, newPos.z);
+        playerGO.transform.position = newPos;
 
         currentPathPosIndex++;
     }
