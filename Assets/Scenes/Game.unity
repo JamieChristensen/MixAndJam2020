@@ -220,6 +220,7 @@ MonoBehaviour:
   gridPosition:
     x: 0
     y: 0
+  deathParticles: {fileID: 0}
 --- !u!65 &35643366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -326,6 +327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &270352571
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -442,6 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &633347536
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -565,6 +572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &691854507
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -660,6 +670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &777011796
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -878,6 +891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &939687512
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -973,6 +989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &953349746
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1082,6 +1101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1136496328
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1205,6 +1227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1202295380
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1554,6 +1579,7 @@ MonoBehaviour:
   gridPosition:
     x: 0
     y: 0
+  deathParticles: {fileID: 0}
 --- !u!65 &1365955312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1648,6 +1674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1451183830
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1757,6 +1786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1511094871
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1880,6 +1912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1534605111
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2014,7 +2049,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -2193,6 +2228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1693877085
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2302,6 +2340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1734395100
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2411,6 +2452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &1924165464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2636,6 +2680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fac09b0df172a949bce19b909b024ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point:
+    x: 0
+    y: 0
 --- !u!64 &2025779595
 MeshCollider:
   m_ObjectHideFlags: 0

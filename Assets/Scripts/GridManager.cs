@@ -66,6 +66,7 @@ public class GridManager : SerializedMonoBehaviour
             for (int j = 0; j < LevelSizeY; j++)
             {
                 Cells[i, j] = Instantiate(Level.Grid[i, j], new Vector3(CellSize.x * i, 0, CellSize.y * j), Quaternion.identity, this.transform);
+                Cells[i, j].point = new int2(i,j);
             }
         }
     }
@@ -97,4 +98,6 @@ public class GridManager : SerializedMonoBehaviour
             Path[i] = Cells[Position.x, Position.y];
         }
     }
+
+    public Level GetCurrentLevel() => LevelManager.GetCurrentLevel();
 }

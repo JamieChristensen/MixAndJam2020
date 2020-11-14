@@ -162,4 +162,25 @@ public class GameManager : SerializedMonoBehaviour
         currentPathPosIndex++;
     }
 
+    private int2 PlayerPositionOnGrid()
+    {
+        return gridManager.Path[currentPathPosIndex].point;
+    }
+
+    public void PlayerAttackAction()
+    {
+        int2 playerPos = PlayerPositionOnGrid();
+
+        if (gridManager.GetCurrentLevel().Enemies[playerPos] == null)
+        {
+            Debug.Log("Enemy dictionary access didn't work");
+        }
+
+        StepUnit unitOnPlayerPos = gridManager.GetCurrentLevel().Enemies[playerPos];
+        
+        unitOnPlayerPos.IsKill();
+
+    }
+
+
 }
