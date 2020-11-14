@@ -62,6 +62,8 @@ public class GameManager : SerializedMonoBehaviour
     [BoxGroup("Step Timer")]
     public VoidEvent managerStepEvent;
 
+    bool HasDonePlayerAction = false;
+
     private void Start()
     {
         //Get level-data and units.
@@ -94,10 +96,18 @@ public class GameManager : SerializedMonoBehaviour
             }
 
             //Grace period for Input to player:
-            if (stepTimer >= stepDuration + stepInputInterval.y)
+            if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
             {
                 PlayerStep(defaultAction);
                 return;
+            }
+
+            if (stepTimer > stepDuration && HasDonePlayerAction)
+            {
+                stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+                stepCount++;
+                hasRaisedStepEventThisStep = false;
+                HasDonePlayerAction = false;
             }
         }
     }
@@ -127,8 +137,6 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerStep(PlayerAction action)
     {
-        hasRaisedStepEventThisStep = true;
-
         action.ResolvePlayerAction(this);
 
         foreach (StepUnit stepUnit in stepUnits)
@@ -136,16 +144,7 @@ public class GameManager : SerializedMonoBehaviour
             stepUnit.OnStep();
         }
 
-        hasRaisedStepEventThisStep = false;
-
-        if (!hasRaisedStepEventThisStep)
-        {
-            managerStepEvent?.Raise();
-        }
-
-        stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
-        stepCount++;
-        hasRaisedStepEventThisStep = false;
+        HasDonePlayerAction = true;
     }
 
     public void MovePlayerToNextPointOnPath()
