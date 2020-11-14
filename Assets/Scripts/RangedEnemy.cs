@@ -15,12 +15,6 @@ public class RangedEnemy : StepUnit
 
     public PlayerAction CounterAction;
 
-    private GameManager _GameManager;
-
-    private void Start()
-    {
-        _GameManager = FindObjectOfType<GameManager>();
-    }
 
     // Start is called before the first frame update
     public override void OnStep()
@@ -31,7 +25,7 @@ public class RangedEnemy : StepUnit
         {
             ShootEvent?.Raise();
 
-            if (_GameManager.PreviousAction != CounterAction)
+            if (GameManager.instance.PreviousAction != CounterAction)
             {
 
             }
@@ -44,8 +38,8 @@ public class RangedEnemy : StepUnit
 
     }
 
-    public virtual bool IsShootStep() => _GameManager.stepCount == ShootStep;
+    public virtual bool IsShootStep() => GameManager.instance.stepCount == ShootStep;
 
 
-    public virtual bool IsPrepareStep() => _GameManager.stepCount == ShootStep - IndicatorSteps;
+    public virtual bool IsPrepareStep() => GameManager.instance.stepCount == ShootStep - IndicatorSteps;
 }

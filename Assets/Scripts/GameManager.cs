@@ -70,7 +70,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void Start()
     {
-
+        Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         SceneManager.sceneLoaded += Init;
     }
 
@@ -83,6 +83,8 @@ public class GameManager : SerializedMonoBehaviour
 
         playerGO = Instantiate(playerGO);
         MovePlayerToNextPointOnPath();
+
+        
     }
 
 
