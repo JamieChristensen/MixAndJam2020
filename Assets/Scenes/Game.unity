@@ -2526,6 +2526,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8550410474388275619, guid: aead7203aba168442a1652c1c0906f76,
         type: 3}
+      propertyPath: pathMarker
+      value: 
+      objectReference: {fileID: 4876267949813427912, guid: 61ad59048b92fd64aac5783f9b26dbb5,
+        type: 3}
+    - target: {fileID: 8550410474388275619, guid: aead7203aba168442a1652c1c0906f76,
+        type: 3}
       propertyPath: Path.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -2568,8 +2574,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 8550410474388275619, guid: aead7203aba168442a1652c1c0906f76,
-        type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aead7203aba168442a1652c1c0906f76, type: 3}
 --- !u!1 &2052824100

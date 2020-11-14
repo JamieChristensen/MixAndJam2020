@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\magnu\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -89,6 +89,28 @@
             <e p="README.txt" t="Include" />
           </e>
         </e>
+        <e p="Samples" t="Include">
+          <e p="High Definition RP" t="Include">
+            <e p="8.2.0" t="Include">
+              <e p="Procedural Sky" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ProceduralSky" t="Include">
+                    <e p="ProceduralSkyEditor.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Runtime" t="Include">
+                  <e p="ProceduralSky" t="Include">
+                    <e p="ProceduralSky.cs" t="Include" />
+                    <e p="ProceduralSkyRenderer.cs" t="Include" />
+                    <e p="Resources" t="Include">
+                      <e p="ProceduralSky.shader" t="Include" />
+                    </e>
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="Actions" t="Include">
             <e p="AttackAction.cs" t="Include" />
@@ -96,7 +118,9 @@
             <e p="MoveAction.cs" t="Include" />
             <e p="PlayerAction.cs" t="Include" />
           </e>
+          <e p="AudioManager.cs" t="Include" />
           <e p="Cell.cs" t="Include" />
+          <e p="FeedbackTest.cs" t="Include" />
           <e p="GameEvents" t="Include">
             <e p="CustomEvents" t="Include">
               <e p="UnityIntEvent.cs" t="Include" />
