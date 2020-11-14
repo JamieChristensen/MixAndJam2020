@@ -54,7 +54,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField]
     private GameObject playerGO;
 
-    [HideInInspector]
+    [ReadOnly]
     public List<StepUnit> stepUnits;
 
     [Header("Events")]
@@ -97,7 +97,7 @@ public class GameManager : SerializedMonoBehaviour
         }
 
         //Grace period for Input to player:
-        if (stepTimer > stepDuration && stepTimer < stepDuration + (float)stepInputInterval.y)
+        if (stepTimer >= stepDuration && stepTimer <= stepDuration + stepInputInterval.y)
         {
             Debug.Log("SUP");
             return;
