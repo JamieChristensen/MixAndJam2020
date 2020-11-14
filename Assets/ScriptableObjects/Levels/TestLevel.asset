@@ -145,6 +145,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  BaseCell: {fileID: 0}
   Path:
   - x: 0
     y: 0

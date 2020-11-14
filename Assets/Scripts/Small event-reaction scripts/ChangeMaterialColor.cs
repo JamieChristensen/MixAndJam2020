@@ -24,23 +24,30 @@ public class ChangeMaterialColor : MonoBehaviour
     public bool changeBetweenTwoColors = false;
     private bool isColorTwoChosen = false;
 
+    private void Awake()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+
     public void ChangeColor()
     {
-        Debug.Log("ChangeColor");
+
         if (!changeBetweenTwoColors)
         {
-            meshRenderer.material.SetColor("_BaseColor", colorToChangeTo);
+            meshRenderer.material.SetColor(propertyName, colorToChangeTo);
             return;
         }
 
         if (isColorTwoChosen)
         {
-            meshRenderer.material.SetColor("_BaseColor", colorToChangeTo);
+            Debug.Log("ChangeColor to color one");
+            meshRenderer.material.SetColor(propertyName, colorToChangeTo);
             isColorTwoChosen = false;
         }
         else
         {
-            meshRenderer.material.SetColor("_BaseColor", secondColorToChangeTo);
+            Debug.Log("ChangeColor to color two");
+            meshRenderer.material.SetColor(propertyName, secondColorToChangeTo);
             isColorTwoChosen = true;
         }
     }

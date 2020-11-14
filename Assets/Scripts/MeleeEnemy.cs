@@ -29,7 +29,7 @@ public class MeleeEnemy : StepUnit
         base.IsKill();
         
         Instantiate(deathParticles, transform.position, Quaternion.identity);
-        Destroy(this.gameObject, 0.1f);
+        Destroy(this, 0.1f);
 
     }
 }
