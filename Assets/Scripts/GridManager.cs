@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Mathematics;
 using Sirenix.OdinInspector;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GridManager : SerializedMonoBehaviour
 {
@@ -16,8 +17,17 @@ public class GridManager : SerializedMonoBehaviour
     private float2 CellSize;
     private Cell[,] Cells;
 
+
+
     // Start is called before the first frame update
     void Awake()
+    {
+        SceneManager.sceneLoaded += Init;
+        Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    [Button(ButtonSizes.Large)]
+    private void Init(Scene scene, LoadSceneMode loadSceneMode)
     {
         // In case we created the grid in editor
         var Cells = FindObjectsOfType<Cell>();
@@ -26,12 +36,6 @@ public class GridManager : SerializedMonoBehaviour
             Destroy(cell);
         }
 
-        Init();
-    }
-
-    [Button(ButtonSizes.Large)]
-    private void Init()
-    {
         Level CurrentLevel = LevelManager.GetCurrentLevel();
         Cell Cell = CurrentLevel.Grid[0, 0];
 
@@ -82,10 +86,19 @@ public class GridManager : SerializedMonoBehaviour
 
     private void SpawnEnemies(Level Level)
     {
-        foreach (var EnemyEntry in Level.Enemies)
+        foreach (var EnemyEntry in Level.MeleeEnemies)
         {
             Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
             Cell.SpawnStepUnit(EnemyEntry.Value);
+        }
+
+        foreach (var EnemyEntry in Level.RangedEnemies)
+        {
+            Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
+            var RangedEnemyEntry = EnemyEntry.Value.Enemy;
+            RangedEnemyEntry.ShootStep = EnemyEntry.Value.StepArgument;
+
+            Cell.SpawnStepUnit(RangedEnemyEntry);
         }
     }
 
