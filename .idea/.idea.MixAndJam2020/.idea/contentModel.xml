@@ -143,7 +143,9 @@
           <e p="GridManager.cs" t="Include" />
           <e p="Level.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
+          <e p="LoopingRangedEnemy.cs" t="Include" />
           <e p="MeleeEnemy.cs" t="Include" />
+          <e p="RangedEnemy.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="Small event-reaction scripts" t="Include">
             <e p="ChangeMaterialColor.cs" t="Include" />

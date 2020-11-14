@@ -40,13 +40,13 @@ public class ChangeMaterialColor : MonoBehaviour
 
         if (isColorTwoChosen)
         {
-            Debug.Log("ChangeColor to color one");
+            //Debug.Log("ChangeColor to color one");
             meshRenderer.material.SetColor(propertyName, colorToChangeTo);
             isColorTwoChosen = false;
         }
         else
         {
-            Debug.Log("ChangeColor to color two");
+            //Debug.Log("ChangeColor to color two");
             meshRenderer.material.SetColor(propertyName, secondColorToChangeTo);
             isColorTwoChosen = true;
         }

@@ -82,7 +82,7 @@ public class GameManager : SerializedMonoBehaviour
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
 
         playerGO = Instantiate(playerGO);
-        MovePlayerToNextPointOnPath();
+        //MovePlayerToNextPointOnPath();
 
         
     }
@@ -110,7 +110,7 @@ public class GameManager : SerializedMonoBehaviour
         {
             if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
             {
-                Debug.Log("In here");
+                //Debug.Log("In here");
                 managerStepEvent.Raise();
                 hasRaisedStepEventThisStep = true;
                 if (managerStepEvent != null)
@@ -180,7 +180,7 @@ public class GameManager : SerializedMonoBehaviour
             Debug.Log("End of path");
             return;
         }
-        Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
+        Vector3 newPos = gridManager.Path[currentPathPosIndex+1].transform.position;
         newPos.y = 0;
 
         currentPathPosIndex++;
@@ -216,8 +216,14 @@ public class GameManager : SerializedMonoBehaviour
     {
         int2 playerPos = PlayerPositionOnGrid();
 
+        Debug.Log(playerPos);
+        Debug.Log(gridManager.GetCellByPoint(playerPos).point);
+        
         StepUnit disguydead;
-        disguydead = gridManager.GetCellByPoint(playerPos).GetComponentInChildren<StepUnit>();
+        disguydead = gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>();
+        //Destroy(gridManager.GetCellByPoint(playerPos));
+        
+        Debug.Log(gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>());
         
         disguydead?.IsKill();
 
