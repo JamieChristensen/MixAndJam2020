@@ -1202,21 +1202,6 @@ PrefabInstance:
       objectReference: {fileID: 269213564}
     - target: {fileID: 8217842846704580861, guid: e35e910e48866014f8c366d93fd05df5,
         type: 3}
-      propertyPath: stepDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217842846704580861, guid: e35e910e48866014f8c366d93fd05df5,
-        type: 3}
-      propertyPath: stepInputInterval.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217842846704580861, guid: e35e910e48866014f8c366d93fd05df5,
-        type: 3}
-      propertyPath: stepInputInterval.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217842846704580861, guid: e35e910e48866014f8c366d93fd05df5,
-        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 8217842846704580861, guid: e35e910e48866014f8c366d93fd05df5,
@@ -1811,28 +1796,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136080511}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1166092433 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8217842846704580860, guid: e35e910e48866014f8c366d93fd05df5,
-    type: 3}
-  m_PrefabInstance: {fileID: 905427185}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1166092434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166092433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1169815770
 GameObject:
   m_ObjectHideFlags: 0

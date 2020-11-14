@@ -77,7 +77,8 @@ public class GameManager : SerializedMonoBehaviour
         SceneManager.sceneLoaded += Init;
     }
 
-    private void Init(Scene scene, LoadSceneMode mode) {
+    private void Init(Scene scene, LoadSceneMode mode)
+    {
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
 
@@ -88,7 +89,7 @@ public class GameManager : SerializedMonoBehaviour
         MovePlayerToNextPointOnPath();
 
 
-        
+
     }
 
 
@@ -153,23 +154,26 @@ public class GameManager : SerializedMonoBehaviour
         Vector3[] points = new Vector3[4];
         Bounds bounds = activeCell.GetComponent<MeshRenderer>().bounds;
 
-        Vector3 center = new Vector3(bounds.center.x, 0f, bounds.center.z);
+        Vector3 center = new Vector3(playerGO.transform.position.x, 0f, playerGO.transform.position.z);
         float t = Map(Mathf.Clamp(stepTimer, 0, stepDuration), 0 - stepInputInterval.x, stepDuration, 0, 1);
 
-        t = Mathf.Clamp(t, 0.01f, 0.99f);
+        t = Mathf.Clamp(t, 0.001f, 0.999f);
 
         float tWidth = Mathf.Clamp01(1.2f - t);
         playerCellVisualizer.startWidth = tWidth;
         playerCellVisualizer.endWidth = tWidth;
 
+        var offset = new Vector3(playerGO.transform.position.x, 0, playerGO.transform.position.z);
 
-        points[0] = new Vector3(bounds.max.x, 0f, bounds.max.z);
+
+
+        points[0] = offset + new Vector3(bounds.max.x - bounds.center.x, 0f, bounds.max.z - bounds.center.z);
         points[0] = Vector3.Lerp(points[0], center, t);
-        points[1] = new Vector3(bounds.max.x, 0f, bounds.min.z);
+        points[1] = offset + new Vector3(bounds.max.x - bounds.center.x, 0f, bounds.min.z - bounds.center.z);
         points[1] = Vector3.Lerp(points[1], center, t);
-        points[2] = new Vector3(bounds.min.x, 0f, bounds.min.z);
+        points[2] = offset + new Vector3(bounds.min.x - bounds.center.x, 0f, bounds.min.z - bounds.center.z);
         points[2] = Vector3.Lerp(points[2], center, t);
-        points[3] = new Vector3(bounds.min.x, 0f, bounds.max.z);
+        points[3] = offset + new Vector3(bounds.min.x - bounds.center.x, 0f, bounds.max.z - bounds.center.z);
         points[3] = Vector3.Lerp(points[3], center, t);
 
         playerCellVisualizer?.SetPositions(points);
@@ -219,21 +223,22 @@ public class GameManager : SerializedMonoBehaviour
 
     public void MovePlayerToNextPointOnPath()
     {
-        if (currentPathPosIndex >= gridManager.Path.Length)
+        if (currentPathPosIndex >= gridManager.Path.Length - 1)
         {
             Debug.Log("End of path");
             return;
         }
-        Vector3 newPos = gridManager.Path[currentPathPosIndex+1].transform.position;
+
+        Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
         newPos.y = 0;
 
         currentPathPosIndex++;
-        
+
         //Visual movement
         playerGO.transform.LookAt(newPos);
         StartCoroutine(LerpToPositon(newPos));
         playerGO.GetComponent<Animator>().Play("Sprint");
-        
+
     }
 
     IEnumerator LerpToPositon(Vector3 pos)
@@ -243,7 +248,7 @@ public class GameManager : SerializedMonoBehaviour
         float lerpDuration = 0.5f;
         while (timeElapsed < lerpDuration)
         {
-            playerGO.transform.position = Vector3.Lerp(fromPos, pos , timeElapsed / lerpDuration);
+            playerGO.transform.position = Vector3.Lerp(fromPos, pos, timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;
 
             yield return null;
@@ -266,13 +271,13 @@ public class GameManager : SerializedMonoBehaviour
 
         Debug.Log(playerPos);
         Debug.Log(gridManager.GetCellByPoint(playerPos).point);
-        
+
         StepUnit disguydead;
         disguydead = gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>();
         //Destroy(gridManager.GetCellByPoint(playerPos));
-        
+
         Debug.Log(gridManager.GetCellByPoint(playerPos).transform.GetComponentInChildren<StepUnit>());
-        
+
         disguydead?.IsKill();
 
     }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8217842846704580861}
   - component: {fileID: 8592758305157549638}
   - component: {fileID: 2108779866566386957}
-  - component: {fileID: 1166092434}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,7 +59,7 @@ MonoBehaviour:
   stepInputInterval:
     x: 0.1
     y: 0.1
-  stepDuration: 1
+  stepDuration: 0.5
   currentPathPosIndex: 0
   defaultAction: {fileID: 11400000, guid: 0ff98670b0fcf484db91404a7054c34a, type: 2}
   playerGO: {fileID: 8302656739427515373, guid: bddc7bfe36f590c43a824565d9380037,
@@ -254,19 +253,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 1
---- !u!114 &1166092434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8217842846704580860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls: []
