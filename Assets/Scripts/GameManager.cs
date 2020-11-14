@@ -12,10 +12,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float stepDuration;
-
     private float stepTimer;
 
-    
+    [Tooltip("The current step in this round. For score, eventually.")]
+    [SerializeField]
+    private int stepCount;
+
+    [Header("Player related")]
+    [SerializeField]
+    private GameObject playerGO;
+
 
 
     // Start is called before the first frame update
@@ -39,9 +45,13 @@ public class GameManager : MonoBehaviour
         }
         stepTimer = 0;
 
+
+
         foreach (StepUnit stepUnit in stepUnits)
         {
             stepUnit.OnStep();
         }
+
+
     }
 }
