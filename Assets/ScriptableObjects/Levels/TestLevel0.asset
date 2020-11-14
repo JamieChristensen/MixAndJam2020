@@ -18,6 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 3549140492230347426, guid: 5b8d48324c0218845aeeea9ca9953b39, type: 3}
     - {fileID: -3135690873893961809, guid: a52c0df4bfafab04d9e675bcc4c73b01, type: 3}
+    - {fileID: 5099779488705565595, guid: b580bafe8c4f83840b2969e76681745c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -83,7 +84,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: Enemies
+    - Name: MeleeEnemies
       Entry: 7
       Data: 1|UnityEngine.Rendering.SerializedDictionary`2[[Unity.Mathematics.int2,
         Unity.Mathematics],[StepUnit, Assembly-CSharp]], Unity.RenderPipelines.Core.Runtime
@@ -96,28 +97,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: Unity.Mathematics.int2, Unity.Mathematics
-    - Name: x
-      Entry: 3
       Data: 1
-    - Name: y
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 7
       Data: 
@@ -136,6 +116,82 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: RangedEnemies
+      Entry: 7
+      Data: 3|UnityEngine.Rendering.SerializedDictionary`2[[Unity.Mathematics.int2,
+        Unity.Mathematics],[RangedSettings, Assembly-CSharp]], Unity.RenderPipelines.Core.Runtime
+    - Name: comparer
+      Entry: 9
+      Data: 2
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Unity.Mathematics.int2, Unity.Mathematics
+    - Name: x
+      Entry: 3
+      Data: 3
+    - Name: y
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: RangedSettings, Assembly-CSharp
+    - Name: Enemy
+      Entry: 10
+      Data: 2
+    - Name: StepArgument
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Unity.Mathematics.int2, Unity.Mathematics
+    - Name: x
+      Entry: 3
+      Data: 2
+    - Name: y
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: RangedSettings, Assembly-CSharp
+    - Name: Enemy
+      Entry: 10
+      Data: 2
+    - Name: StepArgument
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

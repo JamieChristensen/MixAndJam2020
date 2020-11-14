@@ -76,7 +76,7 @@ public class GameManager : SerializedMonoBehaviour
         Init();
     }
 
-    private void Init(Scene scene, LoadSceneMode mode)
+    private void Init()
     {
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
