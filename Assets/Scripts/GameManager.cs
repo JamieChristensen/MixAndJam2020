@@ -16,23 +16,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelManager levelManager;
     [SerializeField]
-    private Level currentLevel; 
-    private int2 currentPosition;
+    private Level currentLevel;
+    private int2 currentPlayerPosition;
 
-    
+
 
     [Header("Step related stuff")]
+    [Tooltip("The current step in this round. For score, eventually.")]
+    [SerializeField]
+    private int stepCount;
 
     [SerializeField]
-    private float stepInputInterval;
+    private float2 stepInputInterval;
 
     [SerializeField]
     private float stepDuration;
     private float stepTimer;
 
-    [Tooltip("The current step in this round. For score, eventually.")]
-    [SerializeField]
-    private int stepCount;
 
     [Header("Inputs")]
     public KeyCode attackKey;
@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour
     {
         stepTimer += Time.deltaTime;
 
-        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval;
-        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval;
+        bool isTimerOverLowerBound = stepTimer > stepDuration - stepInputInterval.x;
+        bool isTimerBelowUpperBound = stepTimer < stepDuration + stepInputInterval.y;
 
         if (!isTimerOverLowerBound)
         {
