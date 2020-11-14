@@ -6,6 +6,14 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
 
+
+[System.Serializable]
+public struct RangedSettings
+{
+    public RangedEnemy Enemy;
+    public int StepArgument;
+}
+
 [CreateAssetMenu()]
 public class Level : SerializedScriptableObject
 {
@@ -17,7 +25,10 @@ public class Level : SerializedScriptableObject
     [ValueDropdown("GetNextAvailablePathCell")]
     public int2[] Path;
 
-    public Dictionary<int2, StepUnit> Enemies;
+    public Dictionary<int2, StepUnit> MeleeEnemies;
+
+    public Dictionary<int2, RangedSettings> RangedEnemies;
+
 
     private IEnumerable<int2> GetNextAvailablePathCell()
     {

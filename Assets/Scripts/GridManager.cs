@@ -84,10 +84,19 @@ public class GridManager : SerializedMonoBehaviour
 
     private void SpawnEnemies(Level Level)
     {
-        foreach (var EnemyEntry in Level.Enemies)
+        foreach (var EnemyEntry in Level.MeleeEnemies)
         {
             Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
             Cell.SpawnStepUnit(EnemyEntry.Value);
+        }
+
+        foreach (var EnemyEntry in Level.RangedEnemies)
+        {
+            Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
+            var RangedEnemyEntry = EnemyEntry.Value.Enemy;
+            RangedEnemyEntry.ShootStep = EnemyEntry.Value.StepArgument;
+
+            Cell.SpawnStepUnit(RangedEnemyEntry);
         }
     }
 

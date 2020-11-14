@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.Mathematics;
 using GameJam.Events;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : SerializedMonoBehaviour
@@ -23,8 +24,7 @@ public class GameManager : SerializedMonoBehaviour
     [Header("Step related stuff")]
     [Tooltip("The current step in this round. For score, eventually.")]
     [ReadOnly]
-    [SerializeField]
-    private int stepCount;
+    public int stepCount;
 
     [BoxGroup("Step Timer")]
     [SerializeField]
@@ -64,10 +64,17 @@ public class GameManager : SerializedMonoBehaviour
     [BoxGroup("Step Timer")]
     public VoidEvent managerStepEvent;
 
+    public PlayerAction PreviousAction;
+
     bool HasDonePlayerAction = false;
 
     private void Start()
     {
+
+        SceneManager.sceneLoaded += Init;
+    }
+
+    private void Init(Scene scene, LoadSceneMode mode) {
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
 
@@ -78,9 +85,10 @@ public class GameManager : SerializedMonoBehaviour
         MovePlayerToNextPointOnPath();
     }
 
+
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -157,6 +165,8 @@ public class GameManager : SerializedMonoBehaviour
         {
             stepUnit.OnStep();
         }
+
+        PreviousAction = action;
 
         HasDonePlayerAction = true;
     }
