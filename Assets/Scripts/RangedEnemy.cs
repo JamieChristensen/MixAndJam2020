@@ -57,9 +57,6 @@ public class RangedEnemy : StepUnit
 
         BulletObject.transform.position = GameManager.instance.playerGO.transform.position;
 
-        Time.timeScale = 0.2f;
-        yield return new WaitForSeconds(GameManager.instance.stepCount * 0.2f);
-        Time.timeScale = 1f;
 
         var NewDirection = transform.position - GameManager.instance.playerGO.transform.position;
         var bulletRB = Bullet.GetComponent<Rigidbody>();
