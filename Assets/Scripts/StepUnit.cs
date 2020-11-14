@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
+using GameJam.Events;
 
 public abstract class StepUnit : MonoBehaviour
 {
+    public VoidEvent onUnitDeath;
     public bool shouldStep = true;
     public int2 gridPosition;
 
@@ -15,7 +17,7 @@ public abstract class StepUnit : MonoBehaviour
             return;
         }
 
-        
+
         //Do other things in classes.
     }
 
