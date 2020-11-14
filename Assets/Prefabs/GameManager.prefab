@@ -54,8 +54,9 @@ MonoBehaviour:
   attackKey: 113
   moveKey: 119
   deflectKey: 101
-  defaultAction: {fileID: 0}
-  playerGO: {fileID: 0}
+  defaultAction: {fileID: 11400000, guid: 0ff98670b0fcf484db91404a7054c34a, type: 2}
+  playerGO: {fileID: 8302656739427515373, guid: bddc7bfe36f590c43a824565d9380037,
+    type: 3}
   stepUnits:
   - {fileID: 0}
   - {fileID: 0}

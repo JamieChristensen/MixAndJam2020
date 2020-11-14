@@ -4,48 +4,61 @@ using UnityEngine;
 using System.Linq;
 using Unity.Mathematics;
 using GameJam.Events;
+using Sirenix.OdinInspector;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SerializedMonoBehaviour
 {
 
-    [Header("Level related")]
+    [BoxGroup("Dependencies")]
     [SerializeField]
     private GridManager gridManager;
-
+    
+    [BoxGroup("Player stuff")]
     private int2 currentPlayerPosition;
 
-
-
+    [BoxGroup("Step Timer")]
     [Header("Step related stuff")]
     [Tooltip("The current step in this round. For score, eventually.")]
+    [ReadOnly]
     [SerializeField]
     private int stepCount;
 
+    [BoxGroup("Step Timer")]
     [SerializeField]
     private float2 stepInputInterval;
-
+    
+    [BoxGroup("Step Timer")]
     [SerializeField]
     private float stepDuration;
+
+    [BoxGroup("Step Timer")]
+    [ReadOnly]
+    [ShowInInspector]
     private float stepTimer;
 
+    [BoxGroup("Step Timer")]
+    [ShowInInspector]
+    [ReadOnly]
     private bool hasRaisedStepEventThisStep;
 
+    [BoxGroup("Player stuff")]
+    [ReadOnly]
     public int currentPathPosIndex;
 
-
-    [Header("Inputs")]
-    public KeyCode attackKey;
-    public KeyCode moveKey, deflectKey;
-
+    [BoxGroup("Player stuff")]
     public PlayerAction defaultAction;
 
     [Header("Player and Units")]
+    [BoxGroup("Player stuff")]
     [SerializeField]
     private GameObject playerGO;
+    
+    [HideInInspector]
     public List<StepUnit> stepUnits;
 
     [Header("Events")]
+    [BoxGroup("Step Timer")]
     public VoidEvent managerStepEvent;
 
     private void Start()
