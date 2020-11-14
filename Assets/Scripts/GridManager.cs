@@ -15,11 +15,16 @@ public class GridManager : SerializedMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Init();
+    }
+
+    [Button(ButtonSizes.Large)]
+    private void Init() {
         Level CurrentLevel = LevelManager.GetCurrentLevel();
         Cell Cell = CurrentLevel.Grid[0, 0];
 
         var Renderer = Cell.GetComponent<Renderer>();
-        var Bounds = Renderer.bounds; 
+        var Bounds = Renderer.bounds;
         var BoundsDistance = Bounds.max - Bounds.min;
         CellSize.x = BoundsDistance.x;
         CellSize.y = BoundsDistance.z;
@@ -44,6 +49,8 @@ public class GridManager : SerializedMonoBehaviour
             }
         }
     }
+
+    
 
     private void SpawnEnemies(Level Level)
     {

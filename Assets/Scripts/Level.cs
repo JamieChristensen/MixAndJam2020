@@ -9,6 +9,8 @@ using System;
 [CreateAssetMenu()]
 public class Level : SerializedScriptableObject
 {
+    public Cell BaseCell;
+
     [TableMatrix(HorizontalTitle="Grid Layout", SquareCells=true)]
     public Cell[,] Grid;
     
@@ -47,6 +49,21 @@ public class Level : SerializedScriptableObject
         var Final = Candidates.Where(x => IsValidCell(x) && !Previous.Equals(x));
         Debug.Log($"Final Length: {Final.ToList().Count}");
         return Final;
+    }
+
+    [Button(ButtonSizes.Medium)]
+    public void FillGridWithBaseCell()
+    {
+        for (int i = 0; i < Grid.GetLength(0); i++)
+        {
+            for (int j = 0; j < Grid.GetLength(1); j++)
+            {
+                if (!Grid[i, j])
+                {
+                    Grid[i, j] = BaseCell;
+                }
+            }
+        }
     }
 
     private bool IsValidCell(int2 Cell)
