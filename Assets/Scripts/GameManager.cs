@@ -54,7 +54,7 @@ public class GameManager : SerializedMonoBehaviour
     [Header("Player and Units")]
     [BoxGroup("Player stuff")]
     [SerializeField]
-    private GameObject playerGO;
+    public GameObject playerGO;
 
     [ReadOnly]
     [HideInEditorMode]
