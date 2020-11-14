@@ -12,7 +12,7 @@ public class Level : SerializedScriptableObject
     
     public int2[] Path;
 
-    public Dictionary<StepUnit, int2> Enemies;
+    public Dictionary<int2, StepUnit> Enemies;
 
 
 }

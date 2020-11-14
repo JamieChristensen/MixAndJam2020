@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SpawnStepUnit(StepUnit Unit)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Instantiate(Unit, transform.position, Quaternion.identity, this.transform);
     }
 }

@@ -26,6 +26,8 @@ public class GridManager : SerializedMonoBehaviour
 
 
         GenerateGrid(CurrentLevel);
+
+        SpawnEnemies(CurrentLevel);
     }
 
     private void GenerateGrid(Level Level) {
@@ -40,6 +42,15 @@ public class GridManager : SerializedMonoBehaviour
             {
                 Cells[i, j] = Instantiate(Level.Grid[i, j], new Vector3(CellSize.x * i, 0, CellSize.y * j), Quaternion.identity, this.transform);
             }
+        }
+    }
+
+    private void SpawnEnemies(Level Level)
+    {
+        foreach (var EnemyEntry in Level.Enemies)
+        {
+            Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
+            Cell.SpawnStepUnit(EnemyEntry.Value);
         }
     }
 }
