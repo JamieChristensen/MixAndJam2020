@@ -8,16 +8,20 @@ using GameJam.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
 
-    [Header("Inputs")]
-    public KeyCode attackKey;
-    public KeyCode moveKey, deflectKey;
+    [Header("Level related")]
+    [SerializeField]
+    private GridManager gridManager;
 
-    public Action defaultAction;
+    [SerializeField]
+    private LevelManager levelManager;
+    [SerializeField]
+    private Level currentLevel; 
+    private int2 currentPosition;
 
-    [Header("Step-related stuff")]
-    public List<StepUnit> stepUnits;
+    
+
+    [Header("Step related stuff")]
 
     [SerializeField]
     private float stepInputInterval;
@@ -30,12 +34,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int stepCount;
 
+    [Header("Inputs")]
+    public KeyCode attackKey;
+    public KeyCode moveKey, deflectKey;
 
+    public Action defaultAction;
 
-    [Header("Player object related stuff")]
+    [Header("Player and Units")]
     [SerializeField]
     private GameObject playerGO;
-    private int2 playerPosition;
+    public List<StepUnit> stepUnits;
 
     [Header("Events")]
     public VoidEvent managerStepEvent;
@@ -49,7 +57,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        instance = this;
+
     }
 
     private void Start()
