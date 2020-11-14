@@ -10,11 +10,13 @@ public class RangedEnemy : StepUnit
     public int IndicatorSteps;
 
     public VoidEvent StartPrepareEvent;
-
     public VoidEvent ShootEvent;
+    public VoidEvent ShootHitEvent;
 
     public PlayerAction CounterAction;
 
+    [SerializeField]
+    private GameObject Bullet;
 
     // Start is called before the first frame update
     public override void OnStep()
@@ -27,7 +29,10 @@ public class RangedEnemy : StepUnit
 
             if (GameManager.instance.PreviousAction != CounterAction)
             {
-
+                // DIE BOY 
+            } else
+            {
+                StartCoroutine(DeflectRayAnimation());
             }
         }
 
@@ -35,6 +40,28 @@ public class RangedEnemy : StepUnit
         {
             StartPrepareEvent?.Raise();
         }
+
+    }
+
+    IEnumerator DeflectRayAnimation()
+    {
+        float ToPlayerDuration = GameManager.instance.stepDuration * 0.6f;
+
+        var BulletObject = Instantiate(Bullet, gameObject.transform.position, gameObject.transform.rotation);
+        for (var time = 0f; time < ToPlayerDuration; time += Time.deltaTime)
+        {
+            var NormalizedTime = time / ToPlayerDuration;
+            BulletObject.transform.position = Vector3.Lerp(transform.position, GameManager.instance.playerGO.transform.position, NormalizedTime);
+            yield return null;
+        }
+
+        Time.timeScale = 0.2f;
+        yield return new WaitForSeconds(GameManager.instance.stepCount * 0.2f);
+        Time.timeScale = 1f;
+
+        var NewDirection = transform.position - GameManager.instance.playerGO.transform.position;
+        var bulletRB = Bullet.GetComponent<Rigidbody>();
+        bulletRB.velocity = NewDirection * 0.2f;
 
     }
 
