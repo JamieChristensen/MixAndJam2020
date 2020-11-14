@@ -44,6 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22eb4b112fc07e145867636ef725f6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   gridManager: {fileID: 0}
   stepCount: 0
   stepInputInterval:
@@ -51,9 +60,6 @@ MonoBehaviour:
     y: 0
   stepDuration: 0.5
   currentPathPosIndex: 0
-  attackKey: 113
-  moveKey: 119
-  deflectKey: 101
   defaultAction: {fileID: 11400000, guid: 0ff98670b0fcf484db91404a7054c34a, type: 2}
   playerGO: {fileID: 8302656739427515373, guid: bddc7bfe36f590c43a824565d9380037,
     type: 3}
@@ -92,7 +98,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8217842846704580861}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerStep
+        m_MethodName: InRangePlayerStep
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: b3eaa9668b8ba2a479c1659bbf5cb527,
@@ -109,7 +115,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8217842846704580861}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerStep
+        m_MethodName: InRangePlayerStep
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 0ff98670b0fcf484db91404a7054c34a,
@@ -126,7 +132,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8217842846704580861}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerStep
+        m_MethodName: InRangePlayerStep
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 536b48fbc37e55b43a36dddfa524b835,
