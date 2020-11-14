@@ -32,8 +32,8 @@ Material:
     - Vector1_5A58A2BB: 0.04
     - Vector1_8EAB45F3: 11
     - Vector1_BF1F2FC4: 0
-    - Vector1_DAB66CC7: 0
-    - Vector1_DC26A34B: 1
+    - Vector1_DAB66CC7: 1
+    - Vector1_DC26A34B: 0.507
     - Vector1_E29FA75E: 10
     - Vector1_E9280975: 2
     m_Colors:
