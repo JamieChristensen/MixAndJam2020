@@ -68,6 +68,9 @@ public class GameManager : SerializedMonoBehaviour
 
     bool HasDonePlayerAction = false;
 
+    [SerializeField]
+    private LineRenderer playerCellVisualizer;
+
     private void Start()
     {
         Init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
@@ -81,8 +84,9 @@ public class GameManager : SerializedMonoBehaviour
         stepUnits.Clear();
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
 
-        playerGO = Instantiate(playerGO);
-        //MovePlayerToNextPointOnPath();
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        MovePlayerToNextPointOnPath();
+
 
         
     }
@@ -105,6 +109,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         //GetPlayerInput and assign to recentInput:
         stepTimer += Time.deltaTime;
+        UpdateCellVisualizer();
 
         if (stepTimer > stepDuration - stepInputInterval.x)
         {
@@ -134,6 +139,45 @@ public class GameManager : SerializedMonoBehaviour
                 HasDonePlayerAction = false;
             }
         }
+    }
+
+    private void UpdateCellVisualizer()
+    {
+        if (playerCellVisualizer == null)
+        {
+            playerCellVisualizer = GetComponent<LineRenderer>();
+        }
+
+        Cell activeCell = CellPlayerIsOn();
+
+        Vector3[] points = new Vector3[4];
+        Bounds bounds = activeCell.GetComponent<MeshRenderer>().bounds;
+
+        Vector3 center = new Vector3(bounds.center.x, 0f, bounds.center.z);
+        float t = Map(Mathf.Clamp(stepTimer, 0, stepDuration), 0 - stepInputInterval.x, stepDuration, 0, 1);
+
+        t = Mathf.Clamp(t, 0.01f, 0.99f);
+
+        float tWidth = Mathf.Clamp01(1.2f - t);
+        playerCellVisualizer.startWidth = tWidth;
+        playerCellVisualizer.endWidth = tWidth;
+
+
+        points[0] = new Vector3(bounds.max.x, 0f, bounds.max.z);
+        points[0] = Vector3.Lerp(points[0], center, t);
+        points[1] = new Vector3(bounds.max.x, 0f, bounds.min.z);
+        points[1] = Vector3.Lerp(points[1], center, t);
+        points[2] = new Vector3(bounds.min.x, 0f, bounds.min.z);
+        points[2] = Vector3.Lerp(points[2], center, t);
+        points[3] = new Vector3(bounds.min.x, 0f, bounds.max.z);
+        points[3] = Vector3.Lerp(points[3], center, t);
+
+        playerCellVisualizer?.SetPositions(points);
+    }
+
+    private float Map(float x, float in_min, float in_max, float out_min, float out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
     public bool IsInRange(float time)
@@ -207,6 +251,10 @@ public class GameManager : SerializedMonoBehaviour
 
     }
 
+    private Cell CellPlayerIsOn()
+    {
+        return gridManager.Path[currentPathPosIndex];
+    }
     private int2 PlayerPositionOnGrid()
     {
         return gridManager.Path[currentPathPosIndex].point;
