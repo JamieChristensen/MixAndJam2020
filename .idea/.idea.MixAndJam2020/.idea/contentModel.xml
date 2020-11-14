@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\magnu\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\magnu\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MixAndJam2020.-63035126.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\MixAndJam2020" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Downloaded assets" t="Include">
+          <e p="Animated Lowpoly skeleton" t="Include">
+            <e p="Animated-Lowpoly-Skeleton-v1.0" t="Include">
+              <e p="Overaction" t="Include">
+                <e p="Animated-Lowpoly-Skeleton" t="Include">
+                  <e p="License.txt" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Flat Shaded Low Poly Swords" t="Include">
+            <e p="Swords Pack by @TheTeaGuns" t="Include">
+              <e p="License.txt" t="Include" />
+              <e p="README.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Low Poly Crates and Barrels" t="Include">
+            <e p="Crates and Barrels" t="Include">
+              <e p="README.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Nature Pack - Low Poly" t="Include">
+            <e p="Nature Pack - Low Poly" t="Include">
+              <e p="Read-Me.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="InputMaster.cs" t="Include" />
+        <e p="Plugins" t="Include">
+          <e p="Demigiant" t="Include">
+            <e p="DOTween" t="Include">
+              <e p="Modules" t="Include">
+                <e p="DOTweenModuleAudio.cs" t="Include" />
+                <e p="DOTweenModulePhysics.cs" t="Include" />
+                <e p="DOTweenModulePhysics2D.cs" t="Include" />
+                <e p="DOTweenModuleSprite.cs" t="Include" />
+                <e p="DOTweenModuleUI.cs" t="Include" />
+                <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+                <e p="DOTweenModuleUtils.cs" t="Include" />
+              </e>
+              <e p="README.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Sirenix" t="Include">
+            <e p="Assemblies" t="Include">
+              <e p="link.xml" t="Include" />
+              <e p="Sirenix.OdinInspector.Attributes.xml" t="Include" />
+              <e p="Sirenix.OdinInspector.Editor.xml" t="Include" />
+              <e p="Sirenix.Serialization.Config.xml" t="Include" />
+              <e p="Sirenix.Utilities.Editor.xml" t="Include" />
+              <e p="Sirenix.Utilities.xml" t="Include" />
+            </e>
+            <e p="Odin Inspector" t="Include">
+              <e p="Modules" t="Include">
+                <e p="Unity.Mathematics" t="Include">
+                  <e p="manifest.txt" t="Include" />
+                  <e p="MathematicsDrawers.cs" t="Include" />
+                  <e p="Sirenix.OdinInspector.Modules.UnityMathematics.asmdef" t="Include" />
+                </e>
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="AssemblyImportSettingsAutomation.cs" t="Include" />
+                  <e p="BuildAOTAutomation.cs" t="Include" />
+                  <e p="EnsureOdinInspectorDefine.cs" t="Include" />
+                  <e p="FixBrokenUnityObjectWrapperDrawer.cs" t="Include" />
+                  <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.asmdef" t="Include" />
+                  <e p="SyncListDrawer.cs" t="Include" />
+                  <e p="SyncVarAttributeDrawer.cs" t="Include" />
+                  <e p="Vector2IntMinMaxAttributeDrawer.cs" t="Include" />
+                  <e p="VectorIntDrawers.cs" t="Include" />
+                  <e p="VectorIntPropertyResolvers.cs" t="Include" />
+                </e>
+                <e p="SerializedNetworkBehaviour.cs" t="Include" />
+                <e p="Sirenix.OdinInspector.CompatibilityLayer.asmdef" t="Include" />
+                <e p="VectorIntFormatters.cs" t="Include" />
+              </e>
+            </e>
+            <e p="README.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Actions" t="Include">
+            <e p="AttackAction.cs" t="Include" />
+            <e p="DeflectAction.cs" t="Include" />
+            <e p="MoveAction.cs" t="Include" />
+            <e p="PlayerAction.cs" t="Include" />
+          </e>
+          <e p="Cell.cs" t="Include" />
+          <e p="GameEvents" t="Include">
+            <e p="CustomEvents" t="Include">
+              <e p="UnityIntEvent.cs" t="Include" />
+              <e p="UnityVoidEvent.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="BaseGameEvent.cs" t="Include" />
+              <e p="IntEvent.cs" t="Include" />
+              <e p="VoidEvent.cs" t="Include" />
+            </e>
+            <e p="Listeners" t="Include">
+              <e p="BaseGameEventListener.cs" t="Include" />
+              <e p="IGameEventListener.cs" t="Include" />
+              <e p="IntTypeListener.cs" t="Include" />
+              <e p="VoidTypeListener.cs" t="Include" />
+            </e>
+            <e p="VoidType.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="GridManager.cs" t="Include" />
+          <e p="Level.cs" t="Include" />
+          <e p="LevelManager.cs" t="Include" />
+          <e p="MeleeEnemy.cs" t="Include" />
+          <e p="SimpleCameraController.cs" t="Include" />
+          <e p="Small event-reaction scripts" t="Include">
+            <e p="ChangeMaterialColor.cs" t="Include" />
+            <e p="DestroyObject.cs" t="Include" />
+            <e p="ExplosionInRadius.cs" t="Include" />
+            <e p="InstantiateObject.cs" t="Include" />
+            <e p="LowerTransform.cs" t="Include" />
+            <e p="RaiseEventOnCollision.cs" t="Include" />
+          </e>
+          <e p="StepUnit.cs" t="Include" />
+          <e p="VisualEffects" t="Include">
+            <e p="BeatHighligther.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+            <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+            <e p="TMP_Bitmap.shader" t="Include" />
+            <e p="TMP_SDF Overlay.shader" t="Include" />
+            <e p="TMP_SDF SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+            <e p="TMP_SDF-Mobile SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface.shader" t="Include" />
+            <e p="TMP_SDF.shader" t="Include" />
+            <e p="TMP_Sprite.shader" t="Include" />
+            <e p="TMPro.cginc" t="Include" />
+            <e p="TMPro_Mobile.cginc" t="Include" />
+            <e p="TMPro_Properties.cginc" t="Include" />
+            <e p="TMPro_Surface.cginc" t="Include" />
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="LocalPackages" t="Include">
+        <e p="com.unity.render-pipelines.high-definition-config" t="Include">
+          <e p="Runtime" t="Include">
+            <e p="ShaderConfig.cs" t="Include" />
+            <e p="ShaderConfig.cs.hlsl" t="Include" />
+            <e p="Unity.RenderPipelines.HighDefinition.Config.Runtime.asmdef" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="MixAndJam2020.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />
+      <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" t="IncludeRecursive" />
+      <e p="Sirenix.OdinInspector.Modules.UnityMathematics.csproj" t="IncludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Unity.RenderPipelines.HighDefinition.Config.Runtime.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>
