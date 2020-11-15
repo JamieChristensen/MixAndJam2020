@@ -150,6 +150,7 @@ MonoBehaviour:
       Data: 
   BaseCell: {fileID: 3549140492230347426, guid: 5b8d48324c0218845aeeea9ca9953b39,
     type: 3}
+  AssociatedLevel: Game
   Path:
   - x: 1
     y: 4
