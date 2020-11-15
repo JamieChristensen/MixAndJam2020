@@ -167,6 +167,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e429bb17735612e409d67e077c4cf7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &515992951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5201660170180817612, guid: e35e910e48866014f8c366d93fd05df5,
+    type: 3}
+  m_PrefabInstance: {fileID: 905427185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &515992952 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 8415578674193679088, guid: e35e910e48866014f8c366d93fd05df5,
+    type: 3}
+  m_PrefabInstance: {fileID: 905427185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &515992953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515992951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e221bfb1a8e6712409c4f8bb5c95e891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 515992952}
+  propertyName: _StripeColor
+  colorToChangeTo: {r: 0, g: 2.187387, b: 2.3775947, a: 0}
+  secondColorToChangeTo: {r: 0, g: 4, b: 0.22113705, a: 0}
+  changeBetweenTwoColors: 1
+--- !u!114 &515992954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515992951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b206943e4efab2d47ae0a404739449f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 0}
+  propertyName: _StripeColor
+  colorToChangeTo: {r: 0, g: 0, b: 0, a: 0}
+  secondColorToChangeTo: {r: 0, g: 0, b: 0, a: 0}
+  changeBetweenTwoColors: 0
 --- !u!1 &554416033
 GameObject:
   m_ObjectHideFlags: 3

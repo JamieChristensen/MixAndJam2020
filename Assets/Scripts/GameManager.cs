@@ -305,4 +305,9 @@ public class GameManager : SerializedMonoBehaviour
 
     }
 
+    public float GetStepTime()
+    {
+        return stepTimer;
+    }
+
 }
