@@ -212,7 +212,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   stepCount: 0
   stepInputInterval:
-    x: 0.2
+    x: 0.4
     y: 0.1
   stepDuration: 1.0909
   currentPathPosIndex: 0
