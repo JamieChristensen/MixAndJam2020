@@ -83,7 +83,7 @@ public class FeedbackManager : MonoBehaviour
 
     IEnumerator volumeIncreaseColorAdjustment()
     {
-        colAdjust.postExposure.value += .4f;
+        colAdjust.postExposure.value = .2f;
         yield return new WaitForSeconds(1f);
         colAdjust.postExposure.value = 0f;
     }
