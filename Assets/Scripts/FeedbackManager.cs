@@ -4,6 +4,8 @@ using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 [RequireComponent(typeof(AudioSource))]
 public class FeedbackManager : MonoBehaviour
@@ -23,6 +25,14 @@ public class FeedbackManager : MonoBehaviour
     AudioSource audSource;
     CinemachineBasicMultiChannelPerlin cameraNoiseChannel;
 
+    [SerializeField]
+    Volume PostFxVolume;
+    ColorAdjustments colAdjust;
+    float defaultColorAdjustment;
+    float volumeCounter = 1f;
+
+
+    bool beatVolumeIncrease;
      bool lerpPanel;
     float startLerp = 0;
 
@@ -34,6 +44,8 @@ public class FeedbackManager : MonoBehaviour
         }
         
         audSource = GetComponent<AudioSource>();
+        PostFxVolume.sharedProfile.TryGet<ColorAdjustments>(out colAdjust);
+        defaultColorAdjustment = colAdjust.postExposure.value;
     }
 
     private void Update()
@@ -44,6 +56,18 @@ public class FeedbackManager : MonoBehaviour
             startLerp += Time.deltaTime * panelWarningSpeed;
             panelWarning.color = Color.Lerp(PanelStartColor, warningstartColor, startLerp);
         }
+        //if (beatVolumeIncrease)
+        //{
+        //    Debug.Log(volumeCounter);
+        //    colAdjust.postExposure.value = 2f;
+        //    volumeCounter += Time.deltaTime * volumeCounter; 
+        //    if (volumeCounter > 2)
+        //    {
+        //        colAdjust.postExposure.value = 0;
+        //        beatVolumeIncrease = false;
+        //        volumeCounter = 0;
+        //    }
+        //}
     }
 
     public void playClipOnBeat()
@@ -74,6 +98,17 @@ public class FeedbackManager : MonoBehaviour
         panelWarning.color = PanelStartColor;
     }
 
+    public void volumeHighlight()
+    {
+        StartCoroutine(volumeIncreaseColorAdjustment());
+    }
+
+    IEnumerator volumeIncreaseColorAdjustment()
+    {
+        colAdjust.postExposure.value += .4f;
+        yield return new WaitForSeconds(1f);
+        colAdjust.postExposure.value = 0f;
+    }
 
     IEnumerator DeathCameraShake()
     {
@@ -87,5 +122,10 @@ public class FeedbackManager : MonoBehaviour
         cameraNoiseChannel.m_AmplitudeGain = beastShake;
         yield return new WaitForSeconds(shakeDuration);
         cameraNoiseChannel.m_AmplitudeGain = 0;
+    }
+
+    private void OnDisable()
+    {
+        colAdjust.postExposure.value = 0;
     }
 }
