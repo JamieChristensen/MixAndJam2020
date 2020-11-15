@@ -19,6 +19,8 @@ public class Level : SerializedScriptableObject
 {
     public Cell BaseCell;
 
+    public string AssociatedLevel;
+
     [TableMatrix(HorizontalTitle="Grid Layout", SquareCells=true)]
     public Cell[,] Grid;
     
