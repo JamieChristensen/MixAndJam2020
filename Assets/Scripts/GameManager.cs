@@ -155,6 +155,9 @@ public class GameManager : SerializedMonoBehaviour
                 if (stepTimer >= timeToWaitBeforeInit)
                 {
                     Init();
+                    Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
+                    newPos.y = 0;
+                    StartCoroutine(LerpRotationToNextDestination(newPos));
                     hasFinishedInit = true;
                     stepTimer = 0;
                 }
@@ -181,6 +184,7 @@ public class GameManager : SerializedMonoBehaviour
                 if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
                 {
                     Debug.Log("Doing base action");
+
                     PlayerStep(defaultAction);
                     return;
                 }
@@ -192,6 +196,7 @@ public class GameManager : SerializedMonoBehaviour
                     stepCount++;
                     hasRaisedStepEventThisStep = false;
                     HasDonePlayerAction = false;
+
                 }
             }
 
@@ -300,7 +305,7 @@ public class GameManager : SerializedMonoBehaviour
         
 
         //Visual movement
-        playerGO.transform.LookAt(newPos);
+
         StartCoroutine(LerpToPositon(newPos,0.5f));
         playerGO.GetComponent<Animator>().Play("Sprint");
         
@@ -333,12 +338,50 @@ public class GameManager : SerializedMonoBehaviour
                 yield return null;
             }
             playerGO.transform.position = Vector3.Lerp(fromPos, pos, timeElapsed / lerpDuration);
+
             timeElapsed += Time.deltaTime;
 
+            if (timeElapsed > lerpDuration * 0.6f)
+            {
+
+                Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
+                newPos.y = 0;
+                StartCoroutine(LerpRotationToNextDestination(newPos));
+            }
             yield return null;
         }
 
     }
+
+    IEnumerator LerpRotationToNextDestination(Vector3 pos)
+    {
+        Vector3 fromPos = playerGO.transform.position;
+        Quaternion fromRot = playerGO.transform.rotation;
+        float timeElapsed = 0;
+        float lerpDuration = stepDuration * 0.2f;
+        while (timeElapsed < lerpDuration)
+        {
+            if (!playerIsAlive)
+            {
+                timeElapsed += 100f;
+                yield return null;
+            }
+
+            playerGO.transform.rotation = Quaternion.Lerp(fromRot,
+              Quaternion.LookRotation(pos - fromPos, Vector3.up), Mathf.Clamp01(timeElapsed / lerpDuration));
+
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed > lerpDuration)
+            {
+                playerGO.transform.rotation = Quaternion.Lerp(fromRot,
+                             Quaternion.LookRotation(pos - fromPos, Vector3.up), 1);
+
+            }
+            yield return null;
+        }
+
+    }
+
 
     private Cell CellPlayerIsOn()
     {
