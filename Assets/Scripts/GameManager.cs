@@ -14,6 +14,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public static GameManager instance;
 
+    public FeedbackCanvas CountdownCanvas;
+
     public bool ShouldStep;
 
     public CinemachineVirtualCamera c;
@@ -146,24 +148,22 @@ public class GameManager : SerializedMonoBehaviour
 
     IEnumerator IntroSequence(float length)
     {
-        float timer = 0;
-        length = Mathf.Clamp(length, 4, length);
-        int previousVal = 0;
+        CountdownCanvas.SetText("3");
+        CountdownCanvas.ActivateFeedback();
+        yield return new WaitForSeconds(1f);
 
-        while (timer < length)
-        {
-            timer += Time.deltaTime;
+        CountdownCanvas.SetText("2");
+        CountdownCanvas.ActivateFeedback();
+        yield return new WaitForSeconds(1f);
 
-            if (previousVal != Mathf.FloorToInt(timer))
-            {
+        CountdownCanvas.SetText("1");
+        CountdownCanvas.ActivateFeedback();
+        yield return new WaitForSeconds(1f);
 
-            }
-            previousVal = Mathf.FloorToInt(timer);
-
-        }
+        CountdownCanvas.SetText("GO");
+        CountdownCanvas.ActivateFeedback();
 
         hasFinishedAudioAndCountdown = true;
-        yield return null;
     }
 
     // Update is called once per frame
@@ -188,19 +188,19 @@ public class GameManager : SerializedMonoBehaviour
                     newPos.y = 0;
                     StartCoroutine(LerpRotationToNextDestination(newPos));
                     hasFinishedInit = true;
+                    StartIntroSequenceEvent?.Raise();
+                    StartCoroutine(IntroSequence(introLength));
                     stepTimer = 0;
                 }
                 else
                 {
                     return;
                 }
+            }
 
-                if (hasFinishedInit && !hasFinishedAudioAndCountdown)
-                {
-                    StartIntroSequenceEvent.Raise();
-                    StartCoroutine(IntroSequence(introLength));
-                    return;
-                }
+            if (!hasFinishedAudioAndCountdown)
+            {
+                return;
             }
 
             //GetPlayerInput and assign to recentInput:
