@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 518843600}
   - component: {fileID: 518843599}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: 'AudioManager '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,6 +323,16 @@ MonoBehaviour:
   killSounds:
   - {fileID: 8300000, guid: 951490fa6b6ad0a4f9e30729be20af14, type: 3}
   - {fileID: 8300000, guid: 77da7b2a88cf6a14aa0f71ce929074d3, type: 3}
+  deflectSounds:
+  - {fileID: 8300000, guid: 0452a204882290a4490a2080935df659, type: 3}
+  - {fileID: 8300000, guid: 6712c92dd29dd5c4abc0794820994317, type: 3}
+  winSounds:
+  - {fileID: 8300000, guid: 3776dffd30494af43ae3c361b73901c2, type: 3}
+  - {fileID: 8300000, guid: 21f617823b1603743b0465201c9e3c0b, type: 3}
+  - {fileID: 8300000, guid: 2fa99cd3da8e2744da3ad786ede03cd0, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: 5d8b729b41b48044aa87ac2bf5b921a5, type: 3}
+  - {fileID: 8300000, guid: 591fb43478e13384a95d5b1e9c624bca, type: 3}
 --- !u!82 &518843600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1548,7 +1558,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005592023}
-  m_LocalRotation: {x: 0.2604315, y: 0.015608143, z: -0.004210725, w: 0.965357}
+  m_LocalRotation: {x: 0.2604315, y: 0.015608177, z: -0.0042107343, w: 0.965357}
   m_LocalPosition: {x: -0.11798512, y: 3.01, z: -3.66968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1855,7 +1865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312745117}
-  m_LocalRotation: {x: 0.2604315, y: 0.015608143, z: -0.004210725, w: 0.965357}
+  m_LocalRotation: {x: 0.2604315, y: 0.015608177, z: -0.0042107343, w: 0.965357}
   m_LocalPosition: {x: -0.11798512, y: 3.01, z: -3.66968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
