@@ -418,11 +418,15 @@ public class GameManager : SerializedMonoBehaviour
             {
                 if (currentPathPosIndex >= gridManager.Path.Length - 1)
                 {
-                    yield return null;
+
                 }
-                Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
-                newPos.y = 0;
-                StartCoroutine(LerpRotationToNextDestination(newPos));
+                else
+                {
+                    Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
+                    newPos.y = 0;
+                    StartCoroutine(LerpRotationToNextDestination(newPos));
+                }
+
             }
             yield return null;
         }
