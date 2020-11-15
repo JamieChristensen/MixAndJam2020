@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy
+  m_Name: Marker
   m_Shader: {fileID: -6465566751694194690, guid: 4f2e0bafa899f7443b9ccd9a036c202b,
     type: 3}
   m_ShaderKeywords: 
@@ -24,6 +24,8 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Vector1_6B90F62: 2.62
+    - Vector1_B0DF12C5: 12
+    - Vector1_E2F12537: 8
     m_Colors:
     - Color_85BF7C30: {r: 4.663284, g: 0.1528946, b: 0, a: 1}
   m_BuildTextureStacks: []
