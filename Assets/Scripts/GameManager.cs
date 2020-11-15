@@ -92,6 +92,9 @@ public class GameManager : SerializedMonoBehaviour
     {
         hasFinishedInit = false;
         ShouldStep = true;
+
+        Vector3 cellPos = gridManager.Path[0].transform.position;
+        playerGO.transform.position = new Vector3(cellPos.x, transform.position.y, cellPos.z);
     }
 
     private void Init()
@@ -125,6 +128,10 @@ public class GameManager : SerializedMonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!playerIsAlive)
+        {
+            return;
+        }
         if (ShouldStep)
         {
             if (!hasFinishedInit)
@@ -180,7 +187,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerIsAlive = false;
         stepTimer = -100000;
-        TurnOnRagdoll(Vector3.up * 1000, playerCellVisualizer.gameObject.transform.position);
+        TurnOnRagdoll(Vector3.up * 100, playerCellVisualizer.gameObject.transform.position);
         yield break;
     }
 
