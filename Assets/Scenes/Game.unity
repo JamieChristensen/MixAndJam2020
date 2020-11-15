@@ -300,7 +300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10.100006, y: 20}
+  m_AnchoredPosition: {x: -10.099976, y: 20}
   m_SizeDelta: {x: 417.3, y: 294.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &468814110
@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 518843606}
   - component: {fileID: 518843605}
   - component: {fileID: 518843604}
+  - component: {fileID: 518843608}
   m_Layer: 0
   m_Name: 'AudioManager '
   m_TagString: Untagged
@@ -470,8 +471,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9f8b4a3966f3d6949b2d67d11318d2dc, type: 3}
   - {fileID: 8300000, guid: ccde675372fc89340b762b53f34ddc8e, type: 3}
   killSounds:
-  - {fileID: 8300000, guid: 951490fa6b6ad0a4f9e30729be20af14, type: 3}
-  - {fileID: 8300000, guid: 77da7b2a88cf6a14aa0f71ce929074d3, type: 3}
+  - {fileID: 8300000, guid: 591fb43478e13384a95d5b1e9c624bca, type: 3}
+  - {fileID: 8300000, guid: 5322a0a517358674e83bbab4eb82fc6c, type: 3}
+  - {fileID: 8300000, guid: 4156cc8f33f8f8246aa1c5cf55ad1576, type: 3}
+  - {fileID: 8300000, guid: 5d8b729b41b48044aa87ac2bf5b921a5, type: 3}
+  - {fileID: 8300000, guid: 1d71fee0c4fd45e438d217aef92cc4a2, type: 3}
+  - {fileID: 8300000, guid: ccde675372fc89340b762b53f34ddc8e, type: 3}
+  - {fileID: 8300000, guid: ccde675372fc89340b762b53f34ddc8e, type: 3}
   deflectSounds:
   - {fileID: 8300000, guid: 0452a204882290a4490a2080935df659, type: 3}
   - {fileID: 8300000, guid: 6712c92dd29dd5c4abc0794820994317, type: 3}
@@ -889,6 +895,34 @@ MonoBehaviour:
       - m_Target: {fileID: 518843599}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Deflect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &518843608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518843598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fbc80395a1b384346a922e8bd95d429b, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 518843599}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: EnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
