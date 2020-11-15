@@ -12,7 +12,8 @@ public class GridManager : SerializedMonoBehaviour
     private LevelManager LevelManager;
 
     public Cell[] Path;
-    public GameObject pathMarker;
+    public PathMarker pathMarker;
+    public int StepsToVisualize;
 
     private float2 CellSize;
     private Cell[,] Cells;
@@ -45,6 +46,25 @@ public class GridManager : SerializedMonoBehaviour
         GeneratePath(CurrentLevel);
 
         SpawnEnemies(CurrentLevel);
+
+        GeneratePathMarkers();
+    }
+
+    private void GeneratePathMarkers()
+    {
+        if (StepsToVisualize == -1)
+        {
+            StepsToVisualize = Path.Length;
+        }
+
+        for (int i = 0; i < StepsToVisualize; i++)
+        {
+            PathMarker Marker = Instantiate(pathMarker);
+            Marker.GridManager = this;
+            Marker.Offset = i + 1;
+
+            Marker.OnStep();
+        }
     }
 
     [Button(ButtonSizes.Large)]
@@ -113,13 +133,6 @@ public class GridManager : SerializedMonoBehaviour
         {
             int2 Position = Level.Path[i];
             Path[i] = Cells[Position.x, Position.y];
-            
-            //add path markers
-            Vector3 pos = Cells[Position.x, Position.y].transform.position + new Vector3(0,0.1f,0);
-            GameObject inst = Instantiate(pathMarker, pos, quaternion.identity);
-            inst.transform.localScale = new Vector3(3, 3, 3);
-            inst.transform.Rotate(90,0,0);
-            inst.transform.parent = Cells[Position.x, Position.y].transform;
         }
     }
 
