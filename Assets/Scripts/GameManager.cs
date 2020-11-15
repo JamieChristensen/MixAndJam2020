@@ -67,13 +67,22 @@ public class GameManager : SerializedMonoBehaviour
     public PlayerAction PreviousAction;
 
     bool HasDonePlayerAction = false;
+    bool hasFinishedInit = false;
+    [SerializeField]
+    float timeToWaitBeforeInit;
 
     [SerializeField]
     private LineRenderer playerCellVisualizer;
 
+    [SerializeField]
+    public MeleeEnemy meleeEnemyPrefab;
+
+    [SerializeField]
+    public RangedEnemy rangedEnemyPrefab;
     private void Start()
     {
-        Init();
+        hasFinishedInit = false;
+
     }
 
     private void Init()
@@ -85,7 +94,7 @@ public class GameManager : SerializedMonoBehaviour
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
-        MovePlayerToNextPointOnPath();
+        //MovePlayerToNextPointOnPath();
 
 
 
@@ -107,6 +116,21 @@ public class GameManager : SerializedMonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!hasFinishedInit)
+        {
+            stepTimer += Time.deltaTime;
+            if (stepTimer >= timeToWaitBeforeInit)
+            {
+                Init();
+                hasFinishedInit = true;
+                stepTimer = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         //GetPlayerInput and assign to recentInput:
         stepTimer += Time.deltaTime;
         UpdateCellVisualizer();
@@ -145,7 +169,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         if (playerCellVisualizer == null)
         {
-            playerCellVisualizer = GetComponent<LineRenderer>();
+            playerCellVisualizer = GetComponentInChildren<LineRenderer>();
         }
 
         Cell activeCell = CellPlayerIsOn();
@@ -156,9 +180,9 @@ public class GameManager : SerializedMonoBehaviour
         Vector3 center = new Vector3(playerGO.transform.position.x, 0f, playerGO.transform.position.z);
         float t = Map(Mathf.Clamp(stepTimer, 0, stepDuration), 0 - stepInputInterval.x, stepDuration, 0, 1);
 
-        t = Mathf.Clamp(t, 0.001f, 0.999f);
+        t = Mathf.Clamp(t, 0f, 1);
 
-        float tWidth = Mathf.Clamp01(0.8f - t);
+        float tWidth = Mathf.Clamp(1f - t, 0.1f, 0.6f);
         playerCellVisualizer.startWidth = tWidth;
         playerCellVisualizer.endWidth = tWidth;
 

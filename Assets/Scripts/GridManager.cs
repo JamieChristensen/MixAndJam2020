@@ -23,6 +23,8 @@ public class GridManager : SerializedMonoBehaviour
     {
         var Children = GetComponentInChildren<Transform>();
         if (Children == null) Init();
+        if (transform.childCount == 0) Init();
+
     }
 
     [Button(ButtonSizes.Large)]
@@ -82,8 +84,9 @@ public class GridManager : SerializedMonoBehaviour
         {
             foreach (var EnemyEntry in Level.MeleeEnemies)
             {
-                Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
-                Cell.SpawnStepUnit(EnemyEntry.Value);
+                Cell Cell = Cells[EnemyEntry.x, EnemyEntry.y];
+                Cell.SpawnStepUnit(GameManager.instance.meleeEnemyPrefab);
+
             }
         }
 
@@ -92,10 +95,8 @@ public class GridManager : SerializedMonoBehaviour
             foreach (var EnemyEntry in Level.RangedEnemies)
             {
                 Cell Cell = Cells[EnemyEntry.Key.x, EnemyEntry.Key.y];
-                var RangedEnemyEntry = EnemyEntry.Value.Enemy;
-                RangedEnemyEntry.ShootStep = EnemyEntry.Value.StepArgument;
 
-                Cell.SpawnStepUnit(RangedEnemyEntry);
+                Cell.SpawnStepUnit(GameManager.instance.rangedEnemyPrefab, EnemyEntry.Value);
             }
         }
     }

@@ -25,9 +25,10 @@ public class Level : SerializedScriptableObject
     [ValueDropdown("GetNextAvailablePathCell")]
     public int2[] Path;
 
-    public Dictionary<int2, StepUnit> MeleeEnemies;
+    
+    public int2[] MeleeEnemies;
 
-    public Dictionary<int2, RangedSettings> RangedEnemies;
+    public Dictionary<int2, int> RangedEnemies;
 
 
     private IEnumerable<int2> GetNextAvailablePathCell()
