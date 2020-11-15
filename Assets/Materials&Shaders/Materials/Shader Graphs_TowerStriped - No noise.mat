@@ -27,6 +27,6 @@ Material:
     - Vector1_47BA067D: 8.1
     m_Colors:
     - Color_8B439428: {r: 0, g: 35.267677, b: 38.937145, a: 0}
-    - Vector2_73380AA9: {r: 1.29, g: 3.21, b: 0, a: 0}
+    - Vector2_73380AA9: {r: 1, g: 1, b: 1, a: 0}
     - _StripeColor: {r: 0, g: 32.905907, b: 36.329643, a: 0}
   m_BuildTextureStacks: []
