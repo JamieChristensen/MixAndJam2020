@@ -79,6 +79,11 @@ public class GameManager : SerializedMonoBehaviour
 
     [SerializeField]
     public RangedEnemy rangedEnemyPrefab;
+
+    [Header("Ragdoll info")]
+    [SerializeField]
+    public List<Collider> ragdollParts = new List<Collider>();
+
     private void Start()
     {
         hasFinishedInit = false;
@@ -307,6 +312,7 @@ public class GameManager : SerializedMonoBehaviour
 
         disguydead?.IsKill();
 
+
     }
 
     public float GetStepTime()
@@ -314,4 +320,53 @@ public class GameManager : SerializedMonoBehaviour
         return stepTimer;
     }
 
+
+    public void TurnOnRagdoll(Vector3 force, Vector3 impactPoint)
+    {
+        Animator animator = playerGO.GetComponent<Animator>();
+
+        Collider closestCollider = null; //Ensures something is assigned to closestCollider.
+        float smallestDistance = Mathf.Infinity;
+
+        foreach (Collider coll in ragdollParts)
+        {
+            Rigidbody rigidbody = coll.GetComponent<Rigidbody>();
+            rigidbody.useGravity = true;
+            rigidbody.isKinematic = false;
+            coll.isTrigger = false;
+            float distance = Vector3.Distance(coll.transform.position, impactPoint);
+            if (distance < smallestDistance)
+            {
+                closestCollider = coll;
+                smallestDistance = distance;
+            }
+        }
+
+        if (closestCollider == null)
+        {
+            Debug.LogError("No collider found in TurnOnRagdoll().");
+            return;
+        }
+       
+        animator.enabled = false;
+    }
+
+    [Button(ButtonSizes.Large)]
+    private void SetRagdollParts()
+    {
+        Collider[] colliders = playerGO.GetComponentsInChildren<Collider>();
+        Debug.Log("Amount of colliders in children: " + colliders.Length);
+
+        foreach (Collider coll in colliders)
+        {
+            if (coll.gameObject != this.gameObject)
+            {
+                coll.isTrigger = true;
+                Rigidbody collRb = coll.GetComponent<Rigidbody>();
+                collRb.useGravity = false;
+                collRb.isKinematic = true;
+                ragdollParts.Add(coll);
+            }
+        }
+    }
 }
