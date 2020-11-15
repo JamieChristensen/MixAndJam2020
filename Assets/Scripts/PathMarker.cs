@@ -20,7 +20,7 @@ public class PathMarker : StepUnit
         base.OnStep();
 
         int StepToVisualze = GameManager.instance.currentPathPosIndex + Offset;
-        if (StepToVisualze > GridManager.Path.Length)
+        if (StepToVisualze >= GridManager.Path.Length)
         {
             enabled = false;
             return;
