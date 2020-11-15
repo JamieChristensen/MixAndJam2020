@@ -32,6 +32,8 @@ public class RangedEnemy : StepUnit
 
             if (GameManager.instance.PreviousAction != CounterAction)
             {
+                Debug.Log("DIEE LMAO");
+                StartCoroutine(DeflectRayAnimation());
                 // DIE BOY 
             } else
             {

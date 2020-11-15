@@ -109,6 +109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd44f081ce91e447901d6efde115642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   shouldStep: 1
   gridPosition:
     x: 0
@@ -121,4 +130,4 @@ MonoBehaviour:
   ShootHitEvent: {fileID: 11400000, guid: 29d2b67868fd6334aa7f3b29a242c215, type: 2}
   ShootDeflectEvent: {fileID: 11400000, guid: 85ac2e9c49d8f6d4a81b8fc5e1ffc399, type: 2}
   CounterAction: {fileID: 11400000, guid: 536b48fbc37e55b43a36dddfa524b835, type: 2}
-  Bullet: {fileID: 3716516044040575774, guid: 797407b31b4978744b4098e8374abbcf, type: 3}
+  Bullet: {fileID: 658245471750784133, guid: a8b66849d5631a84bb6c9398b474644d, type: 3}
