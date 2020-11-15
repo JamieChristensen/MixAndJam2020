@@ -119,6 +119,7 @@ public class GridManager : SerializedMonoBehaviour
             GameObject inst = Instantiate(pathMarker, pos, quaternion.identity);
             inst.transform.localScale = new Vector3(3, 3, 3);
             inst.transform.Rotate(90,0,0);
+            inst.transform.parent = Cells[Position.x, Position.y].transform;
         }
     }
 
