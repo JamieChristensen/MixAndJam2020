@@ -180,9 +180,9 @@ public class GameManager : SerializedMonoBehaviour
         Vector3 center = new Vector3(playerGO.transform.position.x, 0f, playerGO.transform.position.z);
         float t = Map(Mathf.Clamp(stepTimer, 0, stepDuration), 0 - stepInputInterval.x, stepDuration, 0, 1);
 
-        t = Mathf.Clamp(t, 0f, 1);
+        t = Mathf.Clamp(t, 0.1f, 1);
 
-        float tWidth = Mathf.Clamp(1f - t, 0.1f, 0.6f);
+        float tWidth = Mathf.Clamp(1f - t, 0.3f, 0.6f);
         playerCellVisualizer.startWidth = tWidth;
         playerCellVisualizer.endWidth = tWidth;
 
@@ -290,6 +290,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerAttackAction()
     {
+        //playerGO.GetComponent<Animator>();
+
         int2 playerPos = PlayerPositionOnGrid();
 
         Debug.Log(playerPos);

@@ -8,7 +8,7 @@ public class ChangeProperty : MonoBehaviour
     private LineRenderer lineRenderer;
 
     [SerializeField]
-    private string propertyName = "_BaseColor";
+    private string propertyName = "_StripeColor";
 
     [SerializeField]
     [ColorUsage(true, true)]
@@ -31,17 +31,16 @@ public class ChangeProperty : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsInRange(GameManager.instance.GetStepTime()))
+        if (GameManager.instance.IsInRange(GameManager.instance.GetStepTime()) && lineRenderer.material.GetColor(propertyName) != secondColorToChangeTo)
         {
             //Debug.Log("ChangeColor to color one");
             lineRenderer.material.SetColor(propertyName, secondColorToChangeTo);
-            isColorTwoChosen = false;
         }
-        else
+
+        if (!GameManager.instance.IsInRange(GameManager.instance.GetStepTime()) && lineRenderer.material.GetColor(propertyName) != colorToChangeTo)
         {
             //Debug.Log("ChangeColor to color two");
             lineRenderer.material.SetColor(propertyName, colorToChangeTo);
-            isColorTwoChosen = true;
         }
     }
 }
