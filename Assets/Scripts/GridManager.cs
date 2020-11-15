@@ -110,7 +110,7 @@ public class GridManager : SerializedMonoBehaviour
             foreach (var EnemyEntry in Level.MeleeEnemies)
             {
                 Cell Cell = Cells[EnemyEntry.x, EnemyEntry.y];
-                Cell.SpawnStepUnit(GameManager.instance.meleeEnemyPrefab);
+                Cell.SpawnStepUnit(GameManager.instance.meleeEnemyPrefab, EnemyEntry);
 
             }
         }

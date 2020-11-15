@@ -336,7 +336,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         return gridManager.Path[currentPathPosIndex];
     }
-    private int2 PlayerPositionOnGrid()
+    public int2 PlayerPositionOnGrid()
     {
         return gridManager.Path[currentPathPosIndex].point;
     }
