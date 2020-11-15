@@ -336,16 +336,17 @@ public class GameManager : SerializedMonoBehaviour
     {
         return gridManager.Path[currentPathPosIndex];
     }
-    private int2 PlayerPositionOnGrid()
+    public int2 PlayerPositionOnGrid()
     {
         return gridManager.Path[currentPathPosIndex].point;
     }
 
     public void PlayerAttackAction()
     {
+        MovePlayerToNextPointOnPath();
         var anim = playerGO.GetComponent<Animator>();
-        anim.Play("Attack");
-        anim.speed = 3;
+        anim.Play("Charge_Attack");
+        //anim.speed = 3;
 
         int2 playerPos = PlayerPositionOnGrid();
 
