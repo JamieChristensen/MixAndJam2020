@@ -71,9 +71,9 @@ public class RangedEnemy : StepUnit
             var bulletRB = Bullet.GetComponent<Rigidbody>();
             bulletRB.velocity = NewDirection * 0.2f;
 
-            yield return new WaitForSeconds(GameManager.instance.stepDuration * 0.2f);
+            yield return new WaitForSeconds(0);
 
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
             ShootHitEvent?.Raise();
             GameManager.instance.StartCoroutine(GameManager.instance.KillPlayer());
         } 
