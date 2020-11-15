@@ -174,6 +174,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public IEnumerator KillPlayer()
     {
+        TurnOnRagdoll(Vector3.up * 10, playerCellVisualizer.gameObject.transform.position);
         yield break;
     }
 
