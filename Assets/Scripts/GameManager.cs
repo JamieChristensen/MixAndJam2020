@@ -343,9 +343,10 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerAttackAction()
     {
+        MovePlayerToNextPointOnPath();
         var anim = playerGO.GetComponent<Animator>();
-        anim.Play("Attack");
-        anim.speed = 3;
+        anim.Play("Charge_Attack");
+        //anim.speed = 3;
 
         int2 playerPos = PlayerPositionOnGrid();
 
