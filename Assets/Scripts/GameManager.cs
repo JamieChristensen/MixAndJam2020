@@ -110,6 +110,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public AudioManager audioManager;
 
+
     private bool isReloading = false;
     private void Start()
     {
@@ -148,12 +149,21 @@ public class GameManager : SerializedMonoBehaviour
         playerGO = GameObject.FindGameObjectWithTag("Player");
         SetRagdollParts();
         audioManager = FindObjectOfType<AudioManager>();
-        
+
     }
 
 
     IEnumerator IntroSequence(float length)
     {
+        int current = gridManager.LevelManager.CurrentLevel;
+
+        audioManager.PlayCurrentClipStory(current);
+        float waitTime = audioManager.speechClips[current].length;
+
+
+
+        yield return new WaitForSeconds(waitTime);
+
         CountdownCanvas.SetText("3");
         CountdownCanvas.ActivateFeedback();
         yield return new WaitForSeconds(1f);
@@ -170,6 +180,7 @@ public class GameManager : SerializedMonoBehaviour
         CountdownCanvas.ActivateFeedback();
 
         hasFinishedAudioAndCountdown = true;
+
     }
 
     IEnumerator WaitAndReloadScene(float waitTime)
@@ -403,7 +414,10 @@ public class GameManager : SerializedMonoBehaviour
 
             if (timeElapsed > lerpDuration * 0.6f)
             {
-
+                if (currentPathPosIndex + 1 <= gridManager.Path.Length)
+                {
+                    yield return null;
+                }
                 Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
                 newPos.y = 0;
                 StartCoroutine(LerpRotationToNextDestination(newPos));
@@ -454,6 +468,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerAttackAction()
     {
+
+
         IncrementPathPosIndex();
 
         Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
@@ -524,5 +540,11 @@ public class GameManager : SerializedMonoBehaviour
                 ragdollParts.Add(coll);
             }
         }
+    }
+
+    public void PlayerDeflect()
+    {
+        Animator anim = playerGO.GetComponent<Animator>();
+        anim.Play("Deflect");
     }
 }

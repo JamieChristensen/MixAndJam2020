@@ -7,5 +7,6 @@ public class DeflectAction : PlayerAction
 {
     public override void ResolvePlayerAction(GameManager gameManager)
     {
+        gameManager.PlayerDeflect();
     }
 }

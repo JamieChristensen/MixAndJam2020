@@ -123,7 +123,7 @@ MonoBehaviour:
   gridPosition:
     x: 0
     y: 0
-  OnKillEvent: {fileID: 0}
+  OnKillEvent: {fileID: 11400000, guid: fbc80395a1b384346a922e8bd95d429b, type: 2}
   deathParticles: {fileID: 321349753161807524, guid: 63edc08ba05aca642a448ddfe09a5919,
     type: 3}
   playerDeathParticles: {fileID: 321349753161807524, guid: 1b04c2f6abbd96d43aebf42533eda59a,
