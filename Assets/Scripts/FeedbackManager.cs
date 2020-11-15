@@ -20,7 +20,6 @@ public class FeedbackManager : MonoBehaviour
     Color PanelStartColor, warningstartColor;
     [SerializeField]
     float panelWarningSpeed = 1.2f;
-    AudioSource audSource;
     CinemachineBasicMultiChannelPerlin cameraNoiseChannel;
 
     [SerializeField]
@@ -38,8 +37,7 @@ public class FeedbackManager : MonoBehaviour
         {
             cameraNoiseChannel = followCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
-
-        audSource = GetComponent<AudioSource>();
+   
         PostFxVolume.sharedProfile.TryGet<ColorAdjustments>(out colAdjust);
     }
 
