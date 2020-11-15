@@ -377,18 +377,23 @@ public class GameManager : SerializedMonoBehaviour
 
 
         //Visual movement
-
+        if (currentPathPosIndex + 1 < gridManager.Path.Length)
+        {
+            return;
+        }
         StartCoroutine(LerpToPositon(newPos, 0.5f));
         playerGO.GetComponent<Animator>().Play("Sprint");
 
 
     }
+    private bool hasBeenRaised = false;
 
     public void IncrementPathPosIndex()
     {
         if (currentPathPosIndex >= gridManager.Path.Length - 1)
         {
             Debug.Log("End of path");
+            if (hasBeenRaised) return;
             winEvent.Raise();
             return;
         }
