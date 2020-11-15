@@ -85,8 +85,13 @@ public class GameManager : SerializedMonoBehaviour
     [Header("Ragdoll info")]
     [SerializeField]
     public List<Collider> ragdollParts = new List<Collider>();
-    public Vector3 ragdollForce;
+    public Vector3 ragdollForce = new Vector3(0, 100, 0);
 
+    [Header("Events")]
+    [SerializeField]
+    private VoidEvent winEvent;
+    [SerializeField]
+    private VoidEvent playerDeathEvent;
     bool playerIsAlive = true;
 
     private void Start()
@@ -131,6 +136,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         if (!playerIsAlive)
         {
+            playerDeathEvent.Raise();
             return;
         }
         if (ShouldStep)
@@ -281,6 +287,7 @@ public class GameManager : SerializedMonoBehaviour
         if (currentPathPosIndex >= gridManager.Path.Length - 1)
         {
             Debug.Log("End of path");
+            winEvent.Raise();
             return;
         }
 
