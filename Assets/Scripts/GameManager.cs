@@ -290,7 +290,9 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerAttackAction()
     {
-        //playerGO.GetComponent<Animator>();
+        var anim = playerGO.GetComponent<Animator>();
+        anim.Play("Attack");
+        anim.speed = 3;
 
         int2 playerPos = PlayerPositionOnGrid();
 
