@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4917303750355381012}
   - component: {fileID: 8415578674193679088}
   - component: {fileID: 515992953}
-  - component: {fileID: 1120233615262976553}
   m_Layer: 0
   m_Name: Linerenderer
   m_TagString: Untagged
@@ -150,23 +149,6 @@ MonoBehaviour:
   colorToChangeTo: {r: 0, g: 32.905907, b: 36.329643, a: 0}
   secondColorToChangeTo: {r: 34.848164, g: 511.99994, b: 8.041883, a: 0}
   changeBetweenTwoColors: 1
---- !u!114 &1120233615262976553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5201660170180817612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e221bfb1a8e6712409c4f8bb5c95e891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 8415578674193679088}
-  propertyName: _StripeColor
-  colorToChangeTo: {r: 0, g: 32.905907, b: 36.329643, a: 0}
-  secondColorToChangeTo: {r: 191.74902, g: 0, b: 22.086275, a: 0}
-  changeBetweenTwoColors: 1
 --- !u!1 &8217842846704580860
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +203,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  ShouldStep: 0
   gridManager: {fileID: 0}
   stepCount: 0
   stepInputInterval:
@@ -243,6 +226,7 @@ MonoBehaviour:
     type: 3}
   rangedEnemyPrefab: {fileID: 5099779488705565595, guid: b580bafe8c4f83840b2969e76681745c,
     type: 3}
+  ragdollParts: []
 --- !u!114 &8592758305157549638
 MonoBehaviour:
   m_ObjectHideFlags: 0
