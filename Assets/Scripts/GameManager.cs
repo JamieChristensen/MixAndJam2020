@@ -144,22 +144,20 @@ public class GameManager : SerializedMonoBehaviour
                     //Debug.Log("In here");
                     managerStepEvent.Raise();
                     hasRaisedStepEventThisStep = true;
-                    if (managerStepEvent != null)
-                    {
-                        Debug.Log("Raised step-event ");
-                    }
                 }
 
                 //Grace period for Input to player:
                 if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
                 {
+                    Debug.Log("Doing base action");
                     PlayerStep(defaultAction);
                     return;
                 }
 
                 if (stepTimer > stepDuration && HasDonePlayerAction)
                 {
-                    stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+                    //stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+                    stepTimer -= stepDuration;
                     stepCount++;
                     hasRaisedStepEventThisStep = false;
                     HasDonePlayerAction = false;
@@ -233,7 +231,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public void InRangePlayerStep(PlayerAction action)
     {
-        if (IsInRange(stepTimer))
+        if (IsInRange(stepTimer) && !HasDonePlayerAction)
         {
             PlayerStep(action);
         }
@@ -241,6 +239,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerStep(PlayerAction action)
     {
+        HasDonePlayerAction = true;
+
         action.ResolvePlayerAction(this);
 
         foreach (StepUnit stepUnit in stepUnits)
@@ -249,8 +249,6 @@ public class GameManager : SerializedMonoBehaviour
         }
 
         PreviousAction = action;
-
-        HasDonePlayerAction = true;
     }
 
     public void MovePlayerToNextPointOnPath()

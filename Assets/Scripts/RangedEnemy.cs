@@ -52,7 +52,7 @@ public class RangedEnemy : StepUnit
 
     IEnumerator RayAnimation(bool IsKill)
     {
-        float ToPlayerDuration = GameManager.instance.stepDuration * 0.6f;
+        float ToPlayerDuration = GameManager.instance.stepDuration * 0.2f;
 
         var BulletObject = Instantiate(Bullet, gameObject.transform.position, gameObject.transform.rotation);
         for (var time = 0f; time < ToPlayerDuration; time += Time.deltaTime)
@@ -71,7 +71,7 @@ public class RangedEnemy : StepUnit
             var bulletRB = Bullet.GetComponent<Rigidbody>();
             bulletRB.velocity = NewDirection * 0.2f;
 
-            yield return new WaitForSeconds(GameManager.instance.stepDuration * 0.4f);
+            yield return new WaitForSeconds(GameManager.instance.stepDuration * 0.2f);
 
             Time.timeScale = 1f;
             ShootHitEvent?.Raise();
