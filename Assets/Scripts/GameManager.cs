@@ -376,11 +376,7 @@ public class GameManager : SerializedMonoBehaviour
 
 
 
-        //Visual movement
-        if (currentPathPosIndex + 1 < gridManager.Path.Length)
-        {
-            return;
-        }
+        
         StartCoroutine(LerpToPositon(newPos, 0.5f));
         playerGO.GetComponent<Animator>().Play("Sprint");
 
