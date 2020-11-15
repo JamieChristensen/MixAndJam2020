@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c088aa3fdb86c844b5cce8d97d9b2c5, type: 3}
-  m_Name: Level1
+  m_Name: Level3
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -27,10 +27,79 @@ MonoBehaviour:
       Data: 0|Cell[,], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 25
+      Data: 48
     - Name: ranks
       Entry: 1
-      Data: 5|5
+      Data: 6|8
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 10
       Data: 0
@@ -119,34 +188,68 @@ MonoBehaviour:
     type: 3}
   AssociatedLevel: Game
   Path:
-  - x: 0
-    y: 4
-  - x: 0
-    y: 3
-  - x: 0
-    y: 2
-  - x: 0
-    y: 1
-  - x: 0
-    y: 0
   - x: 1
-    y: 0
+    y: 6
+  - x: 1
+    y: 5
   - x: 2
-    y: 0
+    y: 5
+  - x: 2
+    y: 4
+  - x: 1
+    y: 4
+  - x: 1
+    y: 3
+  - x: 2
+    y: 3
+  - x: 2
+    y: 2
+  - x: 1
+    y: 2
+  - x: 1
+    y: 1
+  - x: 2
+    y: 1
   - x: 3
-    y: 0
-  - x: 4
-    y: 0
+    y: 1
   - x: 4
     y: 1
   - x: 4
     y: 2
+  - x: 3
+    y: 2
+  - x: 3
+    y: 3
+  - x: 4
+    y: 3
+  - x: 4
+    y: 4
+  - x: 3
+    y: 4
+  - x: 3
+    y: 5
+  - x: 4
+    y: 5
+  - x: 4
+    y: 6
+  - x: 3
+    y: 6
+  MeleeEnemies:
+  - x: 2
+    y: 5
+  - x: 1
+    y: 4
+  - x: 2
+    y: 3
+  - x: 1
+    y: 2
+  - x: 4
+    y: 1
+  - x: 3
+    y: 2
   - x: 4
     y: 3
   - x: 3
-    y: 3
-  - x: 2
-    y: 3
-  - x: 2
-    y: 2
-  MeleeEnemies: []
+    y: 4
+  - x: 3
+    y: 6
