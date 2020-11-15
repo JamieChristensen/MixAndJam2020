@@ -9,6 +9,9 @@ public class MeleeEnemy : StepUnit
     [SerializeField]
     private GameObject deathParticles;
 
+    [SerializeField]
+    private GameObject playerDeathParticles;
+
     private void Start()
     {
         shouldStep = true;
@@ -40,8 +43,10 @@ public class MeleeEnemy : StepUnit
     {
         yield return new WaitForSeconds(time);
         StartCoroutine(GameManager.instance.KillPlayer());
+        Instantiate(playerDeathParticles, GameManager.instance.playerGO.transform.position, Quaternion.identity);
         yield return null;
     }
+
     public override void IsKill()
     {
         base.IsKill();
