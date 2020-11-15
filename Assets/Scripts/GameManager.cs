@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using GameJam.Events;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 
 public class GameManager : SerializedMonoBehaviour
@@ -14,6 +15,10 @@ public class GameManager : SerializedMonoBehaviour
     public static GameManager instance;
 
     public bool ShouldStep;
+
+    public CinemachineVirtualCamera c;
+    public Transform playerHips;
+
 
     [BoxGroup("Dependencies")]
     [SerializeField]
@@ -85,8 +90,13 @@ public class GameManager : SerializedMonoBehaviour
     [Header("Ragdoll info")]
     [SerializeField]
     public List<Collider> ragdollParts = new List<Collider>();
-    public Vector3 ragdollForce;
+    public Vector3 ragdollForce = new Vector3(0, 100, 0);
 
+    [Header("Events")]
+    [SerializeField]
+    private VoidEvent winEvent;
+    [SerializeField]
+    private VoidEvent playerDeathEvent;
     bool playerIsAlive = true;
 
     private void Start()
@@ -100,6 +110,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void Init()
     {
+
         //Get level-data and units.
         hasRaisedStepEventThisStep = false;
 
@@ -131,6 +142,9 @@ public class GameManager : SerializedMonoBehaviour
     {
         if (!playerIsAlive)
         {
+            c.Follow = playerHips;
+            c.LookAt = playerHips;
+            playerDeathEvent.Raise();
             return;
         }
         if (ShouldStep)
@@ -281,6 +295,7 @@ public class GameManager : SerializedMonoBehaviour
         if (currentPathPosIndex >= gridManager.Path.Length - 1)
         {
             Debug.Log("End of path");
+            winEvent.Raise();
             return;
         }
 
@@ -298,15 +313,17 @@ public class GameManager : SerializedMonoBehaviour
 
     IEnumerator LerpToPositon(Vector3 pos)
     {
-        if (!playerIsAlive)
-        {
-            yield return null;
-        }
+
         Vector3 fromPos = playerGO.transform.position;
         float timeElapsed = 0;
         float lerpDuration = stepDuration * 0.5f;
         while (timeElapsed < lerpDuration)
         {
+            if (!playerIsAlive)
+            {
+                timeElapsed += 100f;
+                yield return null;
+            }
             playerGO.transform.position = Vector3.Lerp(fromPos, pos, timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;
 
@@ -363,9 +380,11 @@ public class GameManager : SerializedMonoBehaviour
             rigidbody.useGravity = true;
             rigidbody.isKinematic = false;
             coll.isTrigger = false;
+
+            rigidbody.AddForce(force, ForceMode.Impulse);
         }
 
-        GameObject.Find("mixamorig:Hips").GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse); //.. I am ashamed of using this.
+        playerGO.transform.DetachChildren();
 
         animator.enabled = false;
     }
