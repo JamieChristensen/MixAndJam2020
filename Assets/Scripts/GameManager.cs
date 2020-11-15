@@ -150,6 +150,10 @@ public class GameManager : SerializedMonoBehaviour
         SetRagdollParts();
         audioManager = FindObjectOfType<AudioManager>();
 
+        if (gridManager.LevelManager.CurrentLevel == 4)
+        {
+            stepDuration *= 0.5f;
+        }
     }
 
 
