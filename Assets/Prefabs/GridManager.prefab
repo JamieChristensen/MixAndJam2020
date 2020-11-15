@@ -53,3 +53,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   LevelManager: {fileID: 11400000, guid: 942329be6514a2d4e85e89352587d46f, type: 2}
+  Path: []
+  pathMarker: {fileID: 3174053126815002527, guid: b8ff54690bbe6fd4697051aaf3622c42,
+    type: 3}
+  StepsToVisualize: 2
