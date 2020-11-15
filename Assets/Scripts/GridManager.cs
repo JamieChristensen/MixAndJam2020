@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GridManager : SerializedMonoBehaviour
 {
     [SerializeField]
-    private LevelManager LevelManager;
+    public LevelManager LevelManager;
 
     public Cell[] Path;
     public PathMarker pathMarker;

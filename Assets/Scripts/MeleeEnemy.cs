@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
-
+using GameJam.Events;
 
 public class MeleeEnemy : StepUnit
 {
@@ -11,6 +11,9 @@ public class MeleeEnemy : StepUnit
 
     [SerializeField]
     private GameObject playerDeathParticles;
+
+    [SerializeField]
+    private VoidEvent meleeDeath;
 
     private void Start()
     {
@@ -52,6 +55,7 @@ public class MeleeEnemy : StepUnit
     {
         base.IsKill();
 
+        meleeDeath.Raise();
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject, 0f);
 
