@@ -33,12 +33,13 @@ public class RangedEnemy : StepUnit
             if (GameManager.instance.PreviousAction != CounterAction)
             {
                 Debug.Log("DIEE LMAO");
-                StartCoroutine(DeflectRayAnimation());
+                StartCoroutine(RayAnimation(true));
+                
                 // DIE BOY 
             } else
             {
                 Debug.Log("SHOOT BOOM");
-                StartCoroutine(DeflectRayAnimation());
+                StartCoroutine(RayAnimation(false));
             }
         }
 
@@ -49,9 +50,9 @@ public class RangedEnemy : StepUnit
 
     }
 
-    IEnumerator DeflectRayAnimation()
+    IEnumerator RayAnimation(bool IsKill)
     {
-        float ToPlayerDuration = GameManager.instance.stepDuration * 0.6f;
+        float ToPlayerDuration = GameManager.instance.stepDuration * 0.2f;
 
         var BulletObject = Instantiate(Bullet, gameObject.transform.position, gameObject.transform.rotation);
         for (var time = 0f; time < ToPlayerDuration; time += Time.deltaTime)
@@ -61,12 +62,31 @@ public class RangedEnemy : StepUnit
             yield return null;
         }
 
-        BulletObject.transform.position = GameManager.instance.playerGO.transform.position;
-        ShootDeflectEvent?.Raise();
+        if (IsKill)
+        {
+            GameManager.instance.ShouldStep = false;
+            Time.timeScale = 0.1f;
 
-        var NewDirection = transform.position - GameManager.instance.playerGO.transform.position;
-        var bulletRB = Bullet.GetComponent<Rigidbody>();
-        bulletRB.velocity = NewDirection * 0.2f;
+            var NewDirection = GameManager.instance.playerGO.transform.position - transform.position;
+            var bulletRB = Bullet.GetComponent<Rigidbody>();
+            bulletRB.velocity = NewDirection * 0.2f;
+
+            yield return new WaitForSeconds(GameManager.instance.stepDuration * 0.2f);
+
+            Time.timeScale = 1f;
+            ShootHitEvent?.Raise();
+            GameManager.instance.StartCoroutine(GameManager.instance.KillPlayer());
+        } 
+        else { 
+            BulletObject.transform.position = GameManager.instance.playerGO.transform.position;
+            ShootDeflectEvent?.Raise();
+
+            var NewDirection = transform.position - GameManager.instance.playerGO.transform.position;
+            var bulletRB = Bullet.GetComponent<Rigidbody>();
+            bulletRB.velocity = NewDirection * 0.2f;
+        }
+
+        
 
     }
 

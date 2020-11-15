@@ -13,6 +13,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public static GameManager instance;
 
+    public bool ShouldStep;
+
     [BoxGroup("Dependencies")]
     [SerializeField]
     private GridManager gridManager;
@@ -87,7 +89,7 @@ public class GameManager : SerializedMonoBehaviour
     private void Start()
     {
         hasFinishedInit = false;
-
+        ShouldStep = true;
     }
 
     private void Init()
@@ -100,8 +102,6 @@ public class GameManager : SerializedMonoBehaviour
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
         //MovePlayerToNextPointOnPath();
-
-
 
     }
 
@@ -121,53 +121,60 @@ public class GameManager : SerializedMonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!hasFinishedInit)
+        if (ShouldStep)
         {
-            stepTimer += Time.deltaTime;
-            if (stepTimer >= timeToWaitBeforeInit)
+            if (!hasFinishedInit)
             {
-                Init();
-                hasFinishedInit = true;
-                stepTimer = 0;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        //GetPlayerInput and assign to recentInput:
-        stepTimer += Time.deltaTime;
-        UpdateCellVisualizer();
-
-        if (stepTimer > stepDuration - stepInputInterval.x)
-        {
-            if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
-            {
-                //Debug.Log("In here");
-                managerStepEvent.Raise();
-                hasRaisedStepEventThisStep = true;
-                if (managerStepEvent != null)
+                stepTimer += Time.deltaTime;
+                if (stepTimer >= timeToWaitBeforeInit)
                 {
-                    Debug.Log("Raised step-event ");
+                    Init();
+                    hasFinishedInit = true;
+                    stepTimer = 0;
+                }
+                else
+                {
+                    return;
                 }
             }
 
-            //Grace period for Input to player:
-            if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
+            //GetPlayerInput and assign to recentInput:
+            stepTimer += Time.deltaTime;
+            UpdateCellVisualizer();
+
+            if (stepTimer > stepDuration - stepInputInterval.x)
             {
-                PlayerStep(defaultAction);
-                return;
+                if (stepTimer >= stepDuration && !hasRaisedStepEventThisStep)
+                {
+                    //Debug.Log("In here");
+                    managerStepEvent.Raise();
+                    hasRaisedStepEventThisStep = true;
+                }
+
+                //Grace period for Input to player:
+                if (stepTimer >= stepDuration + stepInputInterval.y && !HasDonePlayerAction)
+                {
+                    Debug.Log("Doing base action");
+                    PlayerStep(defaultAction);
+                    return;
+                }
+
+                if (stepTimer > stepDuration && HasDonePlayerAction)
+                {
+                    //stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
+                    stepTimer -= stepDuration;
+                    stepCount++;
+                    hasRaisedStepEventThisStep = false;
+                    HasDonePlayerAction = false;
+                }
             }
 
-            if (stepTimer > stepDuration && HasDonePlayerAction)
-            {
-                stepTimer = stepDuration - stepTimer; //Instead of setting to 0, which would cause minor beat-offsets over time.
-                stepCount++;
-                hasRaisedStepEventThisStep = false;
-                HasDonePlayerAction = false;
-            }
         }
+    }
+
+    public IEnumerator KillPlayer()
+    {
+        yield break;
     }
 
     private void UpdateCellVisualizer()
@@ -229,7 +236,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public void InRangePlayerStep(PlayerAction action)
     {
-        if (IsInRange(stepTimer))
+        if (IsInRange(stepTimer) && !HasDonePlayerAction)
         {
             PlayerStep(action);
         }
@@ -237,6 +244,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerStep(PlayerAction action)
     {
+        HasDonePlayerAction = true;
+
         action.ResolvePlayerAction(this);
 
         foreach (StepUnit stepUnit in stepUnits)
@@ -245,8 +254,6 @@ public class GameManager : SerializedMonoBehaviour
         }
 
         PreviousAction = action;
-
-        HasDonePlayerAction = true;
     }
 
     public void MovePlayerToNextPointOnPath()

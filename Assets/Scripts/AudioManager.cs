@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    AudioSource adSource;
+    [SerializeField]
+    AudioClip[] adClips;
+
+    public bool PlayCurrentClipStoryClip(int storyClipIndex)
     {
-        
+
+        StartCoroutine(PlayAudioSequencially(storyClipIndex));
+        return true;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator PlayAudioSequencially(int storyClipIndex)
     {
-        
+
+            adSource.clip = adClips[storyClipIndex];
+            adSource.Play();
+            while (adSource.isPlaying)
+            {
+                yield return null;
+            }
+            
+        }
     }
-}
+
+
+
