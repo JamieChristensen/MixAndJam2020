@@ -376,7 +376,7 @@ public class GameManager : SerializedMonoBehaviour
 
 
 
-        
+
         StartCoroutine(LerpToPositon(newPos, 0.5f));
         playerGO.GetComponent<Animator>().Play("Sprint");
 
@@ -416,6 +416,10 @@ public class GameManager : SerializedMonoBehaviour
 
             if (timeElapsed > lerpDuration * 0.6f)
             {
+                if (currentPathPosIndex >= gridManager.Path.Length - 1)
+                {
+                    yield return null;
+                }
                 Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
                 newPos.y = 0;
                 StartCoroutine(LerpRotationToNextDestination(newPos));
