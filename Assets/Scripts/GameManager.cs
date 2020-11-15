@@ -415,7 +415,7 @@ public class GameManager : SerializedMonoBehaviour
 
             if (timeElapsed > lerpDuration * 0.6f)
             {
-                if (currentPathPosIndex + 1 <= gridManager.Path.Length)
+                if (currentPathPosIndex + 1 < gridManager.Path.Length)
                 {
                     yield return null;
                 }
