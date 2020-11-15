@@ -1674,7 +1674,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005592023}
-  m_LocalRotation: {x: 0.2604315, y: 0.015608177, z: -0.0042107343, w: 0.965357}
+  m_LocalRotation: {x: 0.2604315, y: 0.015608143, z: -0.004210725, w: 0.965357}
   m_LocalPosition: {x: -0.11798512, y: 3.01, z: -3.66968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1981,7 +1981,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312745117}
-  m_LocalRotation: {x: 0.2604315, y: 0.015608177, z: -0.0042107343, w: 0.965357}
+  m_LocalRotation: {x: 0.2604315, y: 0.015608143, z: -0.004210725, w: 0.965357}
   m_LocalPosition: {x: -0.11798512, y: 3.01, z: -3.66968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2902,7 +2902,7 @@ MonoBehaviour:
   panelWarning: {fileID: 1242331726}
   PanelStartColor: {r: 0, g: 0, b: 0, a: 0}
   warningstartColor: {r: 0.6981132, g: 0.4313813, b: 0.4313813, a: 0.69411767}
-  panelWarningSpeed: 1.2
+  panelWarningSpeed: 2
   PostFxVolume: {fileID: 742706110}
 --- !u!4 &2023764980
 Transform:
