@@ -20,6 +20,12 @@ public class AudioManager : MonoBehaviour
     AudioClip[] playerDeathSounds;
     [SerializeField]
     AudioClip[] killSounds;
+    [SerializeField]
+    AudioClip[] deflectSounds;
+    [SerializeField]
+    AudioClip[] winSounds;
+    [SerializeField]
+    AudioClip[] shootSounds;
 
 
     public bool PlayCurrentClipStory(int storyClipIndex)
@@ -37,9 +43,26 @@ public class AudioManager : MonoBehaviour
         soundSFXAudioSource.clip = playerDeathSounds[Random.Range(0, playerDeathSounds.Length)];
         soundSFXAudioSource.Play();
     }
-    public void enemyDeath()
+    public void EnemyDeath()
     {
         soundSFXAudioSource.clip = killSounds[Random.Range(0, killSounds.Length)];
+        soundSFXAudioSource.Play();
+    }
+
+    public void Deflect()
+    {
+        soundSFXAudioSource.clip = deflectSounds[Random.Range(0, deflectSounds.Length)];
+        soundSFXAudioSource.Play();
+    }
+    public void Win()
+    {
+        soundSFXAudioSource.clip = winSounds[Random.Range(0, winSounds.Length)];
+        soundSFXAudioSource.Play();
+    }
+
+    public void ArcherShoots()
+    {
+        soundSFXAudioSource.clip = shootSounds[Random.Range(0, shootSounds.Length)];
         soundSFXAudioSource.Play();
     }
 

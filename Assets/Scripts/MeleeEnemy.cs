@@ -12,9 +12,6 @@ public class MeleeEnemy : StepUnit
     [SerializeField]
     private GameObject playerDeathParticles;
 
-    [SerializeField]
-    private VoidEvent meleeDeath;
-
     private void Start()
     {
         shouldStep = true;
@@ -55,7 +52,6 @@ public class MeleeEnemy : StepUnit
     {
         base.IsKill();
 
-        meleeDeath.Raise();
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject, 0f);
 
