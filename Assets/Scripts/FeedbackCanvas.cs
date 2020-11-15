@@ -9,6 +9,18 @@ public class FeedbackCanvas : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI TextObject;
 
+
+    private void Awake()
+    {
+        InstantDeactive();
+    }
+
+    [Button(ButtonSizes.Small)]
+    public void InstantDeactive()
+    {
+        TextObject.alpha = 0f;
+    }
+
     public void SetText(string Text)
     {
         TextObject.text = Text;
