@@ -160,6 +160,8 @@ GameObject:
   - component: {fileID: 8217842846704580862}
   - component: {fileID: 8217842846704580861}
   - component: {fileID: 8592758305157549638}
+  - component: {fileID: 2304203133778574553}
+  - component: {fileID: 6911851333324365328}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -227,6 +229,7 @@ MonoBehaviour:
   rangedEnemyPrefab: {fileID: 5099779488705565595, guid: b580bafe8c4f83840b2969e76681745c,
     type: 3}
   ragdollParts: []
+  ragdollForce: {x: 0, y: 0, z: 0}
 --- !u!114 &8592758305157549638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,3 +312,45 @@ MonoBehaviour:
   m_DefaultActionMap: Combat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2304203133778574553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217842846704580860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce560db1a439e1b4c8696bc17e838aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelManager: {fileID: 11400000, guid: 942329be6514a2d4e85e89352587d46f, type: 2}
+  MainMenuSceneName: MainMenu
+--- !u!114 &6911851333324365328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217842846704580860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 0}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2304203133778574553}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: StartWinSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
