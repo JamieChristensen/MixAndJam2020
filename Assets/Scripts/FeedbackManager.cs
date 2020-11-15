@@ -28,11 +28,8 @@ public class FeedbackManager : MonoBehaviour
     [SerializeField]
     Volume PostFxVolume;
     ColorAdjustments colAdjust;
-    float defaultColorAdjustment;
-    float volumeCounter = 1f;
 
 
-    bool beatVolumeIncrease;
      bool lerpPanel;
     float startLerp = 0;
 
@@ -45,7 +42,6 @@ public class FeedbackManager : MonoBehaviour
         
         audSource = GetComponent<AudioSource>();
         PostFxVolume.sharedProfile.TryGet<ColorAdjustments>(out colAdjust);
-        defaultColorAdjustment = colAdjust.postExposure.value;
     }
 
     private void Update()
@@ -56,18 +52,7 @@ public class FeedbackManager : MonoBehaviour
             startLerp += Time.deltaTime * panelWarningSpeed;
             panelWarning.color = Color.Lerp(PanelStartColor, warningstartColor, startLerp);
         }
-        //if (beatVolumeIncrease)
-        //{
-        //    Debug.Log(volumeCounter);
-        //    colAdjust.postExposure.value = 2f;
-        //    volumeCounter += Time.deltaTime * volumeCounter; 
-        //    if (volumeCounter > 2)
-        //    {
-        //        colAdjust.postExposure.value = 0;
-        //        beatVolumeIncrease = false;
-        //        volumeCounter = 0;
-        //    }
-        //}
+
     }
 
     public void playClipOnBeat()
