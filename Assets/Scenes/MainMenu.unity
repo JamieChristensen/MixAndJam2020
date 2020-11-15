@@ -1152,7 +1152,7 @@ MonoBehaviour:
 
     [D] - Deflect
 
-    
+
 
     Kill
     red enemies
@@ -1340,7 +1340,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1746785923}
   - component: {fileID: 1746785922}
-  - component: {fileID: 1746785925}
   - component: {fileID: 1746785924}
   m_Layer: 0
   m_Name: Audio
@@ -1358,7 +1357,7 @@ AudioSource:
   m_GameObject: {fileID: 1746785921}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7636018054397635410, guid: 5378b3e7df5933548a674a8bb89c177e,
+  OutputAudioMixerGroup: {fileID: -6663320633923175831, guid: 5378b3e7df5933548a674a8bb89c177e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 32ed2ca6a8b2543489bbecd0c538de99, type: 3}
   m_PlayOnAwake: 1
@@ -1460,26 +1459,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1746785924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746785921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb83f005ce4d524c9ab5c28124b7d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainTrackAudioSource: {fileID: 0}
-  speechAudiosource: {fileID: 0}
-  soundSFXAudioSource: {fileID: 0}
-  speechClips: []
-  MainTracks: []
-  playerDeathSounds: []
-  killSounds: []
---- !u!82 &1746785925
+--- !u!82 &1746785924
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1488,9 +1468,9 @@ AudioSource:
   m_GameObject: {fileID: 1746785921}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6663320633923175831, guid: 5378b3e7df5933548a674a8bb89c177e,
+  OutputAudioMixerGroup: {fileID: 7636018054397635410, guid: 5378b3e7df5933548a674a8bb89c177e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 04a2de5cee35f9e4f91ed8d8b1988ca1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 65665b67440bc224fa7d9f5839a14e6a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

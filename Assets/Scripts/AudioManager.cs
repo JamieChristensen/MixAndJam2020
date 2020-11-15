@@ -60,6 +60,12 @@ public class AudioManager : MonoBehaviour
         soundSFXAudioSource.Play();
     }
 
+    public void ArcherShoots()
+    {
+        soundSFXAudioSource.clip = shootSounds[Random.Range(0, shootSounds.Length)];
+        soundSFXAudioSource.Play();
+    }
+
 
     IEnumerator PlayAudioSequencially(int storyClipIndex)
     {
