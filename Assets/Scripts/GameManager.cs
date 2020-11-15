@@ -292,31 +292,39 @@ public class GameManager : SerializedMonoBehaviour
 
     public void MovePlayerToNextPointOnPath()
     {
+        IncrementPathPosIndex();
+
+        Vector3 newPos = gridManager.Path[currentPathPosIndex ].transform.position;
+        newPos.y = 0;
+
+        
+
+        //Visual movement
+        playerGO.transform.LookAt(newPos);
+        StartCoroutine(LerpToPositon(newPos,0.5f));
+        playerGO.GetComponent<Animator>().Play("Sprint");
+        
+
+    }
+
+    public void IncrementPathPosIndex()
+    {
         if (currentPathPosIndex >= gridManager.Path.Length - 1)
         {
             Debug.Log("End of path");
             winEvent.Raise();
             return;
         }
-
-        Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
-        newPos.y = 0;
-
+        
         currentPathPosIndex++;
-
-        //Visual movement
-        playerGO.transform.LookAt(newPos);
-        StartCoroutine(LerpToPositon(newPos));
-        playerGO.GetComponent<Animator>().Play("Sprint");
-
     }
 
-    IEnumerator LerpToPositon(Vector3 pos)
+    IEnumerator LerpToPositon(Vector3 pos, float percentageOfStep)
     {
 
         Vector3 fromPos = playerGO.transform.position;
         float timeElapsed = 0;
-        float lerpDuration = stepDuration * 0.5f;
+        float lerpDuration = stepDuration * percentageOfStep;
         while (timeElapsed < lerpDuration)
         {
             if (!playerIsAlive)
@@ -343,7 +351,13 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerAttackAction()
     {
-        MovePlayerToNextPointOnPath();
+        IncrementPathPosIndex();
+        
+        Vector3 newPos = gridManager.Path[currentPathPosIndex ].transform.position;
+        newPos.y = 0;
+        playerGO.transform.LookAt(newPos);
+        StartCoroutine(LerpToPositon(newPos,0.1f));
+        
         var anim = playerGO.GetComponent<Animator>();
         anim.Play("Charge_Attack");
         //anim.speed = 3;
