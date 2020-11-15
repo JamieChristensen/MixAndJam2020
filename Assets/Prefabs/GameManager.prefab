@@ -205,15 +205,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  CountdownCanvas: {fileID: 0}
   ShouldStep: 0
   c: {fileID: 0}
   playerHips: {fileID: 0}
   gridManager: {fileID: 0}
   stepCount: 0
   stepInputInterval:
-    x: 0.6
+    x: 0.2
     y: 0.1
-  stepDuration: 1.3
+  stepDuration: 1.0909
   currentPathPosIndex: 0
   defaultAction: {fileID: 11400000, guid: 0ff98670b0fcf484db91404a7054c34a, type: 2}
   playerGO: {fileID: 8302656739427515373, guid: bddc7bfe36f590c43a824565d9380037,
@@ -234,6 +235,9 @@ MonoBehaviour:
   ragdollForce: {x: 0, y: 30, z: 0}
   winEvent: {fileID: 11400000, guid: 54a4d6bbe468b8942a3d8dfb1f5ba54f, type: 2}
   playerDeathEvent: {fileID: 11400000, guid: 780737c20955eba4980c5dc217a518cd, type: 2}
+  StartIntroSequenceEvent: {fileID: 0}
+  introLength: 4
+  audioManager: {fileID: 0}
 --- !u!114 &8592758305157549638
 MonoBehaviour:
   m_ObjectHideFlags: 0
