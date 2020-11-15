@@ -9,6 +9,8 @@ public class FeedbackCanvas : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI TextObject;
 
+    public float FadeOutTime = 2.0f;
+
 
     private void Awake()
     {
@@ -49,6 +51,6 @@ public class FeedbackCanvas : MonoBehaviour
     [ContextMenu("MOOB")]
     public void DeactivateFeedback()
     {
-        TextObject.DOFade(0.0f, 2.0f);
+        TextObject.DOFade(0.0f, FadeOutTime);
     }
 }
