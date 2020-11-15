@@ -18,6 +18,8 @@ public class MeleeEnemy : StepUnit
     {
         base.OnStep();
 
+        if (!shouldStep) return;
+        
         bool isPlayerOnPos = false;
         int2 playerPos = GameManager.instance.PlayerPositionOnGrid();
         isPlayerOnPos = playerPos.Equals(gridPosition);
