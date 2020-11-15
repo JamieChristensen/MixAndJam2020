@@ -27,6 +27,7 @@ public abstract class StepUnit : SerializedMonoBehaviour
 
     public virtual void IsKill()
     {
+        shouldStep = false;
         OnKillEvent?.Raise();
         Debug.Log("Unit is kill.");
     }
