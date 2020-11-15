@@ -85,6 +85,7 @@ public class GameManager : SerializedMonoBehaviour
     [Header("Ragdoll info")]
     [SerializeField]
     public List<Collider> ragdollParts = new List<Collider>();
+    public Vector3 ragdollForce;
 
     bool playerIsAlive = true;
 
@@ -187,7 +188,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerIsAlive = false;
         stepTimer = -100000;
-        TurnOnRagdoll(Vector3.up * 100, playerCellVisualizer.gameObject.transform.position);
+        TurnOnRagdoll(ragdollForce, playerCellVisualizer.gameObject.transform.position);
         yield break;
     }
 
@@ -297,9 +298,13 @@ public class GameManager : SerializedMonoBehaviour
 
     IEnumerator LerpToPositon(Vector3 pos)
     {
+        if (!playerIsAlive)
+        {
+            yield return null;
+        }
         Vector3 fromPos = playerGO.transform.position;
         float timeElapsed = 0;
-        float lerpDuration = 0.5f;
+        float lerpDuration = stepDuration * 0.5f;
         while (timeElapsed < lerpDuration)
         {
             playerGO.transform.position = Vector3.Lerp(fromPos, pos, timeElapsed / lerpDuration);
@@ -351,8 +356,6 @@ public class GameManager : SerializedMonoBehaviour
     {
         Animator animator = playerGO.GetComponent<Animator>();
 
-        Collider closestCollider = null; //Ensures something is assigned to closestCollider.
-        float smallestDistance = Mathf.Infinity;
 
         foreach (Collider coll in ragdollParts)
         {
@@ -360,21 +363,9 @@ public class GameManager : SerializedMonoBehaviour
             rigidbody.useGravity = true;
             rigidbody.isKinematic = false;
             coll.isTrigger = false;
-            float distance = Vector3.Distance(coll.transform.position, impactPoint);
-            if (distance < smallestDistance)
-            {
-                closestCollider = coll;
-                smallestDistance = distance;
-            }
         }
 
-        if (closestCollider == null)
-        {
-            Debug.LogError("No collider found in TurnOnRagdoll().");
-            return;
-        }
-
-        closestCollider.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+        GameObject.Find("mixamorig:Hips").GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse); //.. I am ashamed of using this.
 
         animator.enabled = false;
     }

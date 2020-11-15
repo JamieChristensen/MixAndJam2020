@@ -121,7 +121,7 @@
           <e p="AudioManager.cs" t="Include" />
           <e p="CameraSystem.cs" t="Include" />
           <e p="Cell.cs" t="Include" />
-          <e p="FeedbackTest.cs" t="Include" />
+          <e p="FeedbackManager.cs" t="Include" />
           <e p="GameEvents" t="Include">
             <e p="CustomEvents" t="Include">
               <e p="UnityIntEvent.cs" t="Include" />
@@ -151,6 +151,7 @@
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="Small event-reaction scripts" t="Include">
             <e p="ChangeMaterialColor.cs" t="Include" />
+            <e p="ChangeProperty.cs" t="Include" />
             <e p="DestroyObject.cs" t="Include" />
             <e p="ExplosionInRadius.cs" t="Include" />
             <e p="InstantiateObject.cs" t="Include" />
