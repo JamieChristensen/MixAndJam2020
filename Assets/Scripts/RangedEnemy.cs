@@ -65,7 +65,7 @@ public class RangedEnemy : StepUnit
         if (IsKill)
         {
             GameManager.instance.ShouldStep = false;
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0.3f;
 
             var NewDirection = GameManager.instance.playerGO.transform.position - transform.position;
             var bulletRB = Bullet.GetComponent<Rigidbody>();
