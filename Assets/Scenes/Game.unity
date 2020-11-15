@@ -3048,7 +3048,7 @@ MonoBehaviour:
   panelWarning: {fileID: 1242331726}
   PanelStartColor: {r: 0, g: 0, b: 0, a: 0}
   warningstartColor: {r: 0.6981132, g: 0.4313813, b: 0.4313813, a: 0.69411767}
-  panelWarningSpeed: 1.2
+  panelWarningSpeed: 2
   PostFxVolume: {fileID: 742706110}
 --- !u!4 &2023764980
 Transform:
