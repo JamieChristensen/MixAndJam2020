@@ -86,6 +86,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField]
     public List<Collider> ragdollParts = new List<Collider>();
 
+    bool playerIsAlive = true;
+
     private void Start()
     {
         hasFinishedInit = false;
@@ -100,7 +102,7 @@ public class GameManager : SerializedMonoBehaviour
         stepUnits.Clear();
         stepUnits.AddRange(FindObjectsOfType<StepUnit>());
 
-        playerGO = GameObject.FindGameObjectWithTag("Player");
+
         //MovePlayerToNextPointOnPath();
 
     }
@@ -116,6 +118,8 @@ public class GameManager : SerializedMonoBehaviour
         {
             Destroy(this);
         }
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        SetRagdollParts();
     }
 
     // Update is called once per frame
@@ -174,7 +178,9 @@ public class GameManager : SerializedMonoBehaviour
 
     public IEnumerator KillPlayer()
     {
-        TurnOnRagdoll(Vector3.up * 10, playerCellVisualizer.gameObject.transform.position);
+        playerIsAlive = false;
+        stepTimer = -100000;
+        TurnOnRagdoll(Vector3.up * 1000, playerCellVisualizer.gameObject.transform.position);
         yield break;
     }
 
@@ -245,6 +251,11 @@ public class GameManager : SerializedMonoBehaviour
 
     public void PlayerStep(PlayerAction action)
     {
+        if (!playerIsAlive)
+        {
+            return;
+        }
+
         HasDonePlayerAction = true;
 
         action.ResolvePlayerAction(this);
@@ -355,7 +366,9 @@ public class GameManager : SerializedMonoBehaviour
             Debug.LogError("No collider found in TurnOnRagdoll().");
             return;
         }
-       
+
+        closestCollider.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+
         animator.enabled = false;
     }
 
