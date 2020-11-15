@@ -13,5 +13,7 @@ public class LevelManager : SerializedScriptableObject
 
     public Level GetCurrentLevel() => AllLevels[CurrentLevel];
 
+    public int GetNumberOfLevels() => AllLevels?.Length ?? -1;
+
 
 }
