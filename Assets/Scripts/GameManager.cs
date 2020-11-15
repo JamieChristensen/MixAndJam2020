@@ -152,7 +152,7 @@ public class GameManager : SerializedMonoBehaviour
 
         if (gridManager.LevelManager.CurrentLevel == 4)
         {
-            stepDuration *= 0.5f;
+            stepDuration = 0.7f;
         }
     }
 
@@ -184,7 +184,8 @@ public class GameManager : SerializedMonoBehaviour
         CountdownCanvas.ActivateFeedback();
 
         hasFinishedAudioAndCountdown = true;
-        audioManager.PlaySelectMusicTrack(current);
+        int track = current % 2 == 1 ? 0 : 4;
+        audioManager.PlaySelectMusicTrack(track);
 
     }
 
