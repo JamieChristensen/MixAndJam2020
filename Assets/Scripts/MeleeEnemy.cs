@@ -19,7 +19,7 @@ public class MeleeEnemy : StepUnit
         base.OnStep();
 
         if (!shouldStep) return;
-        
+
         bool isPlayerOnPos = false;
         int2 playerPos = GameManager.instance.PlayerPositionOnGrid();
         isPlayerOnPos = playerPos.Equals(gridPosition);
@@ -27,7 +27,7 @@ public class MeleeEnemy : StepUnit
         Debug.Log("Is player on this enemy position?: " + isPlayerOnPos + "\n" + " playerPos / enemyPos: " + playerPos + " / " + gridPosition);
         if (isPlayerOnPos)
         {
-            GameManager.instance.StartCoroutine(GameManager.instance.KillPlayer());
+            StartCoroutine(WaitThenKILL(GameManager.instance.stepDuration*0.5f));
         }
         //Debug.Log("step");
 
@@ -36,10 +36,16 @@ public class MeleeEnemy : StepUnit
         //Needs grid-reference to kill player.
     }
 
+    IEnumerator WaitThenKILL(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StartCoroutine(GameManager.instance.KillPlayer());
+        yield return null;
+    }
     public override void IsKill()
     {
         base.IsKill();
-        
+
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject, 0f);
 

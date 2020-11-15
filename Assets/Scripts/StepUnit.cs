@@ -13,6 +13,11 @@ public abstract class StepUnit : SerializedMonoBehaviour
 
     public VoidEvent OnKillEvent;
 
+    private void Update()
+    {
+        transform.LookAt(GameManager.instance.playerGO.transform.position);
+    }
+
     public virtual void OnStep()
     {
         if (!shouldStep)

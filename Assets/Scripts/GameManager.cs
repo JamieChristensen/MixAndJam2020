@@ -99,6 +99,12 @@ public class GameManager : SerializedMonoBehaviour
     private VoidEvent playerDeathEvent;
     bool playerIsAlive = true;
 
+    bool hasFinishedAudioAndCountdown = false;
+    [SerializeField]
+    private VoidEvent StartIntroSequenceEvent;
+    [SerializeField]
+    [Range(4, 20)]
+    private float introLength;
     private void Start()
     {
         hasFinishedInit = false;
@@ -137,6 +143,29 @@ public class GameManager : SerializedMonoBehaviour
         SetRagdollParts();
     }
 
+
+    IEnumerator IntroSequence(float length)
+    {
+        float timer = 0;
+        length = Mathf.Clamp(length, 4, length);
+        int previousVal = 0;
+
+        while (timer < length)
+        {
+            timer += Time.deltaTime;
+
+            if (previousVal != Mathf.FloorToInt(timer))
+            {
+
+            }
+            previousVal = Mathf.FloorToInt(timer);
+
+        }
+
+        hasFinishedAudioAndCountdown = true;
+        yield return null;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -163,6 +192,13 @@ public class GameManager : SerializedMonoBehaviour
                 }
                 else
                 {
+                    return;
+                }
+
+                if (hasFinishedInit && !hasFinishedAudioAndCountdown)
+                {
+                    StartIntroSequenceEvent.Raise();
+                    StartCoroutine(IntroSequence(introLength));
                     return;
                 }
             }
@@ -210,6 +246,7 @@ public class GameManager : SerializedMonoBehaviour
         TurnOnRagdoll(ragdollForce, playerCellVisualizer.gameObject.transform.position);
         yield break;
     }
+
 
     private void UpdateCellVisualizer()
     {

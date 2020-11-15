@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4541465780253457017}
   - component: {fileID: 7990826555923142269}
   m_Layer: 0
-  m_Name: Linerenderer
+  m_Name: Linerenderer trailrenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,10 +47,11 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d93122de38b2abf48af9c0512315a5fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
