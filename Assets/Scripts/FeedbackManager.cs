@@ -27,9 +27,9 @@ public class FeedbackManager : MonoBehaviour
     Volume PostFxVolume;
     ColorAdjustments colAdjust;
 
- 
 
-     bool lerpPanel;
+
+    bool lerpPanel;
     float startLerp = 0;
 
     void Start()
@@ -38,14 +38,14 @@ public class FeedbackManager : MonoBehaviour
         {
             cameraNoiseChannel = followCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
-        
+
         audSource = GetComponent<AudioSource>();
         PostFxVolume.sharedProfile.TryGet<ColorAdjustments>(out colAdjust);
     }
 
     private void Update()
     {
-        
+
         if (lerpPanel)
         {
             startLerp += Time.deltaTime * panelWarningSpeed;
@@ -93,7 +93,7 @@ public class FeedbackManager : MonoBehaviour
     IEnumerator DeathCameraShake()
     {
         cameraNoiseChannel.m_AmplitudeGain = deathShake;
-        yield return new WaitForSeconds(shakeDuration+ .5f);
+        yield return new WaitForSeconds(shakeDuration + .5f);
         cameraNoiseChannel.m_AmplitudeGain = 0;
     }
 
@@ -106,6 +106,9 @@ public class FeedbackManager : MonoBehaviour
 
     private void OnDisable()
     {
-        colAdjust.postExposure.value = 0;
+        if (colAdjust != null)
+        {
+            colAdjust.postExposure.value = 0;
+        }
     }
 }
