@@ -107,6 +107,10 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField]
     [Range(4, 20)]
     private float introLength;
+
+    public AudioManager audioManager;
+
+    private bool isReloading = false;
     private void Start()
     {
         hasFinishedInit = false;
@@ -143,6 +147,8 @@ public class GameManager : SerializedMonoBehaviour
         }
         playerGO = GameObject.FindGameObjectWithTag("Player");
         SetRagdollParts();
+        audioManager = FindObjectOfType<AudioManager>();
+        
     }
 
 
@@ -166,14 +172,31 @@ public class GameManager : SerializedMonoBehaviour
         hasFinishedAudioAndCountdown = true;
     }
 
+    IEnumerator WaitAndReloadScene(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+    }
     // Update is called once per frame
     private void Update()
     {
+        if (Time.timeScale < 1)
+        {
+            Time.timeScale += Time.deltaTime;
+            Time.timeScale = Mathf.Clamp01(Time.timeScale);
+        }
+
         if (!playerIsAlive)
         {
             c.Follow = playerHips;
             c.LookAt = playerHips;
             playerDeathEvent.Raise();
+
+            if (isReloading)
+            {
+                return;
+            }
+            StartCoroutine(WaitAndReloadScene(5f));
             return;
         }
         if (ShouldStep)
@@ -336,16 +359,16 @@ public class GameManager : SerializedMonoBehaviour
     {
         IncrementPathPosIndex();
 
-        Vector3 newPos = gridManager.Path[currentPathPosIndex ].transform.position;
+        Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
         newPos.y = 0;
 
-        
+
 
         //Visual movement
 
-        StartCoroutine(LerpToPositon(newPos,0.5f));
+        StartCoroutine(LerpToPositon(newPos, 0.5f));
         playerGO.GetComponent<Animator>().Play("Sprint");
-        
+
 
     }
 
@@ -357,7 +380,7 @@ public class GameManager : SerializedMonoBehaviour
             winEvent.Raise();
             return;
         }
-        
+
         currentPathPosIndex++;
     }
 
@@ -432,12 +455,12 @@ public class GameManager : SerializedMonoBehaviour
     public void PlayerAttackAction()
     {
         IncrementPathPosIndex();
-        
-        Vector3 newPos = gridManager.Path[currentPathPosIndex ].transform.position;
+
+        Vector3 newPos = gridManager.Path[currentPathPosIndex].transform.position;
         newPos.y = 0;
         playerGO.transform.LookAt(newPos);
-        StartCoroutine(LerpToPositon(newPos,0.1f));
-        
+        StartCoroutine(LerpToPositon(newPos, 0.1f));
+
         var anim = playerGO.GetComponent<Animator>();
         anim.Play("Charge_Attack");
         //anim.speed = 3;

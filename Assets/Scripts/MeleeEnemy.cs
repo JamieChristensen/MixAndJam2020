@@ -44,6 +44,7 @@ public class MeleeEnemy : StepUnit
         yield return new WaitForSeconds(time);
         StartCoroutine(GameManager.instance.KillPlayer());
         Instantiate(playerDeathParticles, GameManager.instance.playerGO.transform.position, Quaternion.identity);
+        Time.timeScale = 0.3f;
         yield return null;
     }
 
