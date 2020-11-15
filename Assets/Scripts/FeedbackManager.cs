@@ -7,11 +7,9 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
-[RequireComponent(typeof(AudioSource))]
 public class FeedbackManager : MonoBehaviour
 {
-    [SerializeField]
-    AudioClip oneBeatAudio = default;
+
     [SerializeField]
     CinemachineVirtualCamera followCamera = default;
     [SerializeField]
@@ -29,6 +27,7 @@ public class FeedbackManager : MonoBehaviour
     Volume PostFxVolume;
     ColorAdjustments colAdjust;
 
+ 
 
      bool lerpPanel;
     float startLerp = 0;
@@ -55,10 +54,6 @@ public class FeedbackManager : MonoBehaviour
 
     }
 
-    public void playClipOnBeat()
-    {
-        audSource.PlayOneShot(oneBeatAudio);
-    }
 
     [ContextMenu("shake that camera booty")]
     public void BeatShake()
