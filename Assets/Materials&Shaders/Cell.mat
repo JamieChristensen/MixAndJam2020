@@ -22,7 +22,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
+    m_Floats:
+    - Vector1_93D7A47F: 1
+    - Vector1_9749A4B6: 1.23
     m_Colors:
-    - Color_69984457: {r: 0.22641507, g: 0.11021716, b: 0.21027157, a: 0}
+    - Color_69984457: {r: 9.734288, g: 1.1721917, b: 7.848588, a: 1}
+    - Color_F15D2CA: {r: 0.6597539, g: 0.47614315, b: 0.54882234, a: 0.9686275}
   m_BuildTextureStacks: []
