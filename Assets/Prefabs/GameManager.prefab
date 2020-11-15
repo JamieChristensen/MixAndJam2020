@@ -206,6 +206,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   ShouldStep: 0
+  c: {fileID: 0}
+  playerHips: {fileID: 0}
   gridManager: {fileID: 0}
   stepCount: 0
   stepInputInterval:
@@ -229,7 +231,9 @@ MonoBehaviour:
   rangedEnemyPrefab: {fileID: 5099779488705565595, guid: b580bafe8c4f83840b2969e76681745c,
     type: 3}
   ragdollParts: []
-  ragdollForce: {x: 0, y: 0, z: 0}
+  ragdollForce: {x: 0, y: 30, z: 0}
+  winEvent: {fileID: 11400000, guid: 54a4d6bbe468b8942a3d8dfb1f5ba54f, type: 2}
+  playerDeathEvent: {fileID: 11400000, guid: 780737c20955eba4980c5dc217a518cd, type: 2}
 --- !u!114 &8592758305157549638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8826a87feb8f4f74ead6bae77603a757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
+  gameEvent: {fileID: 11400000, guid: 54a4d6bbe468b8942a3d8dfb1f5ba54f, type: 2}
   unityEventResponse:
     m_PersistentCalls:
       m_Calls:
