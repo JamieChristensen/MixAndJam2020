@@ -176,28 +176,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: Unity.Mathematics.int2, Unity.Mathematics
-    - Name: x
-      Entry: 3
-      Data: 2
-    - Name: y
-      Entry: 3
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -232,4 +211,12 @@ MonoBehaviour:
     y: 4
   - x: 4
     y: 5
-  MeleeEnemies: []
+  MeleeEnemies:
+  - x: 1
+    y: 4
+  - x: 1
+    y: 3
+  - x: 3
+    y: 3
+  - x: 4
+    y: 3
