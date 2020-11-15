@@ -420,10 +420,6 @@ public class GameManager : SerializedMonoBehaviour
 
             if (timeElapsed > lerpDuration * 0.6f)
             {
-                if (currentPathPosIndex + 1 < gridManager.Path.Length)
-                {
-                    yield return null;
-                }
                 Vector3 newPos = gridManager.Path[currentPathPosIndex + 1].transform.position;
                 newPos.y = 0;
                 StartCoroutine(LerpRotationToNextDestination(newPos));
