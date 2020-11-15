@@ -21,17 +21,23 @@ public class SceneController : MonoBehaviour
         GoToNextLevel();
     }
 
-
+    private bool goingToNextLevel = false;
     public void GoToNextLevel()
     {
+        if (goingToNextLevel)
+        {
+            return;
+        }
         LevelManager.CurrentLevel++;
         if (LevelManager.CurrentLevel > LevelManager.GetNumberOfLevels())
         {
             SceneManager.LoadScene(MainMenuSceneName);
-        } else
+        }
+        else
         {
             SceneManager.LoadScene(LevelManager.GetCurrentLevel().AssociatedLevel);
         }
+        goingToNextLevel = true;
     }
 
 }

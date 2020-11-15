@@ -180,6 +180,7 @@ public class GameManager : SerializedMonoBehaviour
         CountdownCanvas.ActivateFeedback();
 
         hasFinishedAudioAndCountdown = true;
+        audioManager.PlaySelectMusicTrack(current);
 
     }
 
