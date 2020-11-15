@@ -94,7 +94,7 @@ public class GameManager : SerializedMonoBehaviour
         ShouldStep = true;
 
         Vector3 cellPos = gridManager.Path[0].transform.position;
-        playerGO.transform.position = new Vector3(cellPos.x, transform.position.y, cellPos.z);
+        playerGO.transform.position = new Vector3(cellPos.x, 0, cellPos.z);
     }
 
     private void Init()
