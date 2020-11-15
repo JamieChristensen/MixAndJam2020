@@ -165,6 +165,11 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
 
+    public void KillPlayer()
+    {
+
+    }
+
     private void UpdateCellVisualizer()
     {
         if (playerCellVisualizer == null)
