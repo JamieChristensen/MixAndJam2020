@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 321349753161807527}
   - component: {fileID: 321349753161807526}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BloodSplatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.764151, g: 0.34028485, b: 0, a: 1}
-      maxColor: {r: 0.745283, g: 0, b: 0, a: 1}
+      minColor: {r: 0.373042, g: 0.7243245, b: 0.9528302, a: 1}
+      maxColor: {r: 0.20705767, g: 0.9339623, b: 0.7559031, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5128,8 +5128,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.764151, g: 0.34028485, b: 0, a: 1}
-      maxColor: {r: 0.745283, g: 0, b: 0, a: 1}
+      minColor: {r: 0.7728729, g: 0.88843775, b: 0.9811321, a: 1}
+      maxColor: {r: 0.6737718, g: 0.94496554, b: 0.9716981, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
