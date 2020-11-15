@@ -15,6 +15,10 @@ public class PathMarker : StepUnit
         transform.Rotate(90, 0, 0);
     }
 
+    public override void LookAt()
+    {
+        //Do nothing
+    }
     public override void OnStep()
     {
         base.OnStep();

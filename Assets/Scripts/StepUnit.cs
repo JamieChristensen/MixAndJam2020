@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Mathematics;
 using GameJam.Events;
 using Sirenix.OdinInspector;
+using UnityEngine.Animations;
 
 public abstract class StepUnit : SerializedMonoBehaviour
 {
@@ -15,9 +16,14 @@ public abstract class StepUnit : SerializedMonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(GameManager.instance.playerGO.transform.position);
+        LookAt();
+        
     }
 
+    public virtual void LookAt()
+    {
+        transform.LookAt(GameManager.instance.playerGO.transform.position);
+    }
     public virtual void OnStep()
     {
         if (!shouldStep)
